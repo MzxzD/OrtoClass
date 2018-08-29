@@ -1,0 +1,6 @@
+framework module Pods_OrtoClassUITests {
+  umbrella header "Pods-OrtoClassUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
