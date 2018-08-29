@@ -7,7 +7,7 @@ class CellHeaderFooterView: UITableViewHeaderFooterView {
     let sectionTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.applyStyle(Theme.Styles.Text.Semibold.normal.blackColor)
+//        label.applyStyle(Theme.Styles.Text.Semibold.normal.blackColor)d
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         return label
