@@ -24,7 +24,7 @@ class RestManager {
         enableHTTPLogs = false
         #endif
         
-        return enableHTTPLogs
+        return true
     }()
     
     private init () {
@@ -54,9 +54,10 @@ class RestManager {
      - returns: Returns DataRequest object to enable cancelation of requests.
      */
     
-    static func request<T: Codable> (url: String, method: HTTPMethod, params: Parameters?, headers: HTTPHeaders?,using completion: @escaping ((Result<T>) ->Void)) -> DataRequest? {
-        return RestManager.manager.request(url, method: method, parameters: params, encoding: URLEncoding.default, headers: headers)
-            .validate()
+    static func request<T: Codable> (url: String, method: HTTPMethod, params: Parameters?, headers: HTTPHeaders?, encoding:  ParameterEncoding = URLEncoding.default,using completion: @escaping ((Result<T>) ->Void)) -> DataRequest? {
+        return RestManager.manager.request(url, method: method, parameters: params, encoding: encoding, headers: headers)
+            .validate(contentType: ["application/json"])
+            
             .responseData { (response) in
                 
                 printResponse(response: response)
@@ -83,9 +84,10 @@ class RestManager {
      - parameter method: type of HttpMethod request.
      - parameter headers: specific request headers
      */
-    static func requestObservable<T:Codable> (url: String, method: HTTPMethod, params: Parameters?, headers: HTTPHeaders?)->Observable<T>{
+    static func requestObservable<T:Codable> (url: String, method: HTTPMethod, params: Parameters?,headers: HTTPHeaders?, encoding: ParameterEncoding = URLEncoding.default)->Observable<T>{
         return Observable<T>.create{ (emitter) -> Disposable in
-            let request = RestManager.request(url: url,method: method, params: params, headers: headers, using: { (result:Result<T>) in
+            let request = RestManager.request(url: url,method: method, params: params, headers: headers,encoding: encoding, using: { (result:Result<T>) in
+            
                 do{
                     if(result.isSuccess){
                         if let value = result.value{

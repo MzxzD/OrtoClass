@@ -7,6 +7,9 @@ def shared_pods
   pod 'RxCocoa'
   pod 'R.swift'
   pod 'IQKeyboardManager'
+  pod 'RealmSwift'
+  pod 'Charts'
+  pod 'ChartsRealm'
 
 end
 

@@ -14,7 +14,8 @@ class ResultCoordinator: Coordinator{
     init (presenter: UINavigationController){
         self.presenter = presenter
         let controller = ResultViewController()
-//        controller.VM = HomeViewModel()
+        let resultVM = ResultVM()
+        controller.VM = resultVM
         //Add ViewModel initialization.
         self.controller = controller
         

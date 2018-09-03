@@ -50,6 +50,9 @@
 		B5B2A11F2129BD170063A070 /* TableSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A11C2129BD170063A070 /* TableSectionItem.swift */; };
 		B5B2A1222129BD210063A070 /* TableRefreshViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A1202129BD210063A070 /* TableRefreshViewModel.swift */; };
 		B5B2A1232129BD210063A070 /* TableRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A1212129BD210063A070 /* TableRefreshView.swift */; };
+		B5E90D55213D621E0028EA56 /* ResultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E90D54213D621E0028EA56 /* ResultRepository.swift */; };
+		B5E90D57213D648B0028EA56 /* ResultPOSTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E90D56213D648B0028EA56 /* ResultPOSTModel.swift */; };
+		B5E90D59213D64FA0028EA56 /* POSTJsonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E90D58213D64FA0028EA56 /* POSTJsonResponse.swift */; };
 		B75C13E4CBFC523587215045 /* Pods_OrtoClassUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9195A29E37968A14FB2FC0B7 /* Pods_OrtoClassUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +129,9 @@
 		B5B2A11C2129BD170063A070 /* TableSectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableSectionItem.swift; sourceTree = "<group>"; };
 		B5B2A1202129BD210063A070 /* TableRefreshViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableRefreshViewModel.swift; sourceTree = "<group>"; };
 		B5B2A1212129BD210063A070 /* TableRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableRefreshView.swift; sourceTree = "<group>"; };
+		B5E90D54213D621E0028EA56 /* ResultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRepository.swift; sourceTree = "<group>"; };
+		B5E90D56213D648B0028EA56 /* ResultPOSTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPOSTModel.swift; sourceTree = "<group>"; };
+		B5E90D58213D64FA0028EA56 /* POSTJsonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POSTJsonResponse.swift; sourceTree = "<group>"; };
 		CFB7E6B9615C1955A3241668 /* Pods_OrtoClass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrtoClass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -318,7 +324,10 @@
 		B5B2A0DA2129BC200063A070 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B5E90D53213D62030028EA56 /* Repositories */,
 				B5B2A0E22129BC7C0063A070 /* Base */,
+				B5E90D56213D648B0028EA56 /* ResultPOSTModel.swift */,
+				B5E90D58213D64FA0028EA56 /* POSTJsonResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -433,6 +442,14 @@
 				B5B2A1202129BD210063A070 /* TableRefreshViewModel.swift */,
 			);
 			path = TableRefresh;
+			sourceTree = "<group>";
+		};
+		B5E90D53213D62030028EA56 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				B5E90D54213D621E0028EA56 /* ResultRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -590,18 +607,26 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-OrtoClass/Pods-OrtoClass-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/ChartsRealm/ChartsRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChartsRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
@@ -661,11 +686,13 @@
 				B5B2A0F82129BCCF0063A070 /* CoordinatorDelegate.swift in Sources */,
 				B5B2A0E82129BC8C0063A070 /* RestEndpoints.swift in Sources */,
 				B5B2A0F02129BCA90063A070 /* HomeViewModel.swift in Sources */,
+				B5E90D55213D621E0028EA56 /* ResultRepository.swift in Sources */,
 				B5B2A0F72129BCCF0063A070 /* Coordinator.swift in Sources */,
 				967736A92135540A0083109B /* CellHeader.swift in Sources */,
 				B5B2A11D2129BD170063A070 /* TableItem.swift in Sources */,
 				B5B2A1152129BCF70063A070 /* LoaderViewProtocol.swift in Sources */,
 				B5B2A0E72129BC8C0063A070 /* RestManager.swift in Sources */,
+				B5E90D59213D64FA0028EA56 /* POSTJsonResponse.swift in Sources */,
 				B5B2A10A2129BCEB0063A070 /* Collection+Extension.swift in Sources */,
 				B5B2A0DE2129BC350063A070 /* AppCoordinator.swift in Sources */,
 				B5B2A11E2129BD170063A070 /* TableRefresh.swift in Sources */,
@@ -679,6 +706,7 @@
 				B52724FD213D53C50061493C /* ResultCoordinator.swift in Sources */,
 				B5B2A1222129BD210063A070 /* TableRefreshViewModel.swift in Sources */,
 				B5B2A1072129BCEB0063A070 /* IndexPath+Extensions.swift in Sources */,
+				B5E90D57213D648B0028EA56 /* ResultPOSTModel.swift in Sources */,
 				B5B2A0EA2129BC8C0063A070 /* BaseRepositoryProtocol.swift in Sources */,
 				B52724FB213D4F930061493C /* HomeCalculateFooterView.swift in Sources */,
 				B5B2A0EC2129BC990063A070 /* HomeCoordinator.swift in Sources */,
@@ -845,6 +873,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4417A903518FC68FFA875A94 /* Pods-OrtoClass.debug.xcconfig */;
 			buildSettings = {
+				API_BASE_URL_ENDPOINT = "https://ussouthcentral.services.azureml.net/workspaces";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z29U9TK6XW;
@@ -865,6 +894,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5FBED5BE1DDF7D1529447B05 /* Pods-OrtoClass.release.xcconfig */;
 			buildSettings = {
+				API_BASE_URL_ENDPOINT = "https://ussouthcentral.services.azureml.net/workspaces";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z29U9TK6XW;
