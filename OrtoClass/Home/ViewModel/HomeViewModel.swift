@@ -32,6 +32,7 @@ class HomeViewModel: HomeViewModelProtocol {
     let itemsNameArray : ItemsNamesArray = [(type: .PELVIC_INCIDENCE, name: "Pelvic Independence :"),(type: .PELVIC_TILT, name: "Pelvic Tilt :"),(type: .LUMBAR_LORDOSIS_ANGLE, name: "Lumbar lordosis angle :"),(type: .SACRAL_SLOPE, name: "Sacral Slope"),(type: .PELVIC_RADIUS, name: "Pelvic radius :"),(type: .DEGREE_SPONDYLOLISTHESIS, name: "Degree spondylolisthesis")     ]
 //    var itemNamesTableItem : [TableItem<TableTypes, ItemsNamesArray>]
     var itemsToPresent: [TableSectionItem<TableTypes, TableTypes, ItemsNames>] = []
+    weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
     
     
     
@@ -46,11 +47,24 @@ class HomeViewModel: HomeViewModelProtocol {
 
         self.refreshView = PublishSubject()
     }
+    
+    func validateAndOpenResultScreen() {
+//        let validateResultTuple = validateInputData()
+//        if (validateResultTuple.value) {
+//            fillObjetAndSendToResult()
+//        }else {
+//            triggerError(errorMessage: validateResultTuple.errorMessage)
+//        }
+        homeCoordinatorDelegate?.openResultScreen()
+        print("Button Tapped!")
+    }
+    
 }
 
 
 protocol HomeViewModelProtocol: TableRefreshViewModelProtocol {
     var itemsToPresent: [TableSectionItem<TableTypes, TableTypes, ItemsNames>] {get}
-//    var priceCoordinatorDelegate: MenuCoordinatorDelegate? {get set}
+    var homeCoordinatorDelegate: HomeCoordinatorDelegate? {get set}
 //    func rowSelected(type: ItemsEnum)
+    func validateAndOpenResultScreen()
 }

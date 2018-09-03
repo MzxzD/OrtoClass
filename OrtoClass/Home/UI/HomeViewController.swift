@@ -20,6 +20,12 @@ class HomeViewController: UIViewController, TableRefreshView {
     var VM: HomeViewModelProtocol!
 
     
+    let calculateFooterView: CalculateFooterView = {
+        let footerView =  CalculateFooterView()
+        footerView.translatesAutoresizingMaskIntoConstraints = false
+        return footerView
+    }()
+    
     let headerView: HeaderView = {
         let headerView = HeaderView()
         headerView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,6 +36,7 @@ class HomeViewController: UIViewController, TableRefreshView {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        calculateFooterView.validateAndOpenResultScreen = self
         self.title = "OrtoClass"
 
     }
@@ -37,12 +44,13 @@ class HomeViewController: UIViewController, TableRefreshView {
     func setupView() {
         view.backgroundColor = .white
         let tableContentView = UIView()
-        view.addSubviews(tableContentView)
+        view.addSubviews(headerView,tableContentView, calculateFooterView)
         tableContentView.frame = view.bounds
         tableContentView.backgroundColor = .clear
         tableContentView.addSubview(tableView)
         tableView.frame = tableContentView.bounds
         setupTableView()
+        setupConstraints()
     }
     
     private func setupTableView(){
@@ -53,12 +61,32 @@ class HomeViewController: UIViewController, TableRefreshView {
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
         tableView.register(CellHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: CellHeaderFooterView.identifier)
         tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
         if #available(iOS 11.0, *) {
         }else {
             tableView.rowHeight = UITableViewAutomaticDimension
             tableView.estimatedRowHeight = 44
             
         }
+    }
+    
+    func setupConstraints(){
+        let constraints = [
+            headerView.topAnchor.constraint(equalTo: view.topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 15),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: calculateFooterView.topAnchor, constant: 15),
+            calculateFooterView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            calculateFooterView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            calculateFooterView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15),
+            calculateFooterView.heightAnchor.constraint(equalToConstant: 50),
+            ]
+        
+        NSLayoutConstraint.activate(constraints)
     }
 
 }
@@ -97,3 +125,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
 //        self.menuViewModel.rowSelected(type: selectedValue.type)
     }
 }
+
+extension HomeViewController: ValidateAndOpenResultScreenDelegate {
+    func calculateButtonTapped() {
+        VM.validateAndOpenResultScreen()
+    }
+}
+

@@ -12,6 +12,10 @@
 		967736A72135528A0083109B /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967736A62135528A0083109B /* Header.swift */; };
 		967736A92135540A0083109B /* CellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967736A82135540A0083109B /* CellHeader.swift */; };
 		A8B60F0BEDC098EAA633A9B0 /* Pods_OrtoClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB7E6B9615C1955A3241668 /* Pods_OrtoClass.framework */; };
+		B52724FB213D4F930061493C /* HomeCalculateFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52724FA213D4F930061493C /* HomeCalculateFooterView.swift */; };
+		B52724FD213D53C50061493C /* ResultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52724FC213D53C50061493C /* ResultCoordinator.swift */; };
+		B52724FF213D53EB0061493C /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52724FE213D53EB0061493C /* ResultViewController.swift */; };
+		B5272501213D54640061493C /* HomeCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5272500213D54640061493C /* HomeCoordinatorDelegate.swift */; };
 		B5B2A0C02129BBFA0063A070 /* OrtoClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0BF2129BBFA0063A070 /* OrtoClassTests.swift */; };
 		B5B2A0CB2129BBFA0063A070 /* OrtoClassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0CA2129BBFA0063A070 /* OrtoClassUITests.swift */; };
 		B5B2A0DD2129BC350063A070 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0DB2129BC350063A070 /* AppDelegate.swift */; };
@@ -77,6 +81,10 @@
 		967736A82135540A0083109B /* CellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellHeader.swift; sourceTree = "<group>"; };
 		9CBB81C49D379E2D2DE7D2B7 /* Pods-OrtoClassUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrtoClassUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OrtoClassUITests/Pods-OrtoClassUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A6CEFB4C3E00B769074BC009 /* Pods_OrtoClassTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrtoClassTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B52724FA213D4F930061493C /* HomeCalculateFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCalculateFooterView.swift; sourceTree = "<group>"; };
+		B52724FC213D53C50061493C /* ResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultCoordinator.swift; path = OrtoClass/Home/UI/FooterView/ResultCoordinator.swift; sourceTree = SOURCE_ROOT; };
+		B52724FE213D53EB0061493C /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultViewController.swift; path = OrtoClass/Home/UI/FooterView/ResultViewController.swift; sourceTree = SOURCE_ROOT; };
+		B5272500213D54640061493C /* HomeCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorDelegate.swift; sourceTree = "<group>"; };
 		B5B2A0A72129BBF90063A070 /* OrtoClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrtoClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B2A0B62129BBFA0063A070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5B2A0BB2129BBFA0063A070 /* OrtoClassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrtoClassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +191,7 @@
 		9636FD5A21354B18008917C4 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				B52724FC213D53C50061493C /* ResultCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -197,6 +206,7 @@
 		9636FD5C21354B28008917C4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B52724FE213D53EB0061493C /* ResultViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -216,6 +226,14 @@
 				967736A82135540A0083109B /* CellHeader.swift */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		B52724F9213D4F760061493C /* FooterView */ = {
+			isa = PBXGroup;
+			children = (
+				B52724FA213D4F930061493C /* HomeCalculateFooterView.swift */,
+			);
+			path = FooterView;
 			sourceTree = "<group>";
 		};
 		B5B2A09E2129BBF90063A070 = {
@@ -306,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				B5B2A0EB2129BC990063A070 /* HomeCoordinator.swift */,
+				B5272500213D54640061493C /* HomeCoordinatorDelegate.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -313,6 +332,7 @@
 		B5B2A0E02129BC660063A070 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B52724F9213D4F760061493C /* FooterView */,
 				967736A5213552760083109B /* Header */,
 				967736A1213551030083109B /* Cell */,
 				B5B2A0ED2129BCA10063A070 /* HomeViewController.swift */,
@@ -648,12 +668,15 @@
 				B5B2A0EE2129BCA10063A070 /* HomeViewController.swift in Sources */,
 				B5B2A0FB2129BCD70063A070 /* DataWrapper.swift in Sources */,
 				967736A72135528A0083109B /* Header.swift in Sources */,
+				B5272501213D54640061493C /* HomeCoordinatorDelegate.swift in Sources */,
 				B5B2A0DD2129BC350063A070 /* AppDelegate.swift in Sources */,
 				B5B2A1172129BCF70063A070 /* SpinnerView.swift in Sources */,
 				B5B2A1162129BCF70063A070 /* LoaderOverlayView.swift in Sources */,
+				B52724FD213D53C50061493C /* ResultCoordinator.swift in Sources */,
 				B5B2A1222129BD210063A070 /* TableRefreshViewModel.swift in Sources */,
 				B5B2A1072129BCEB0063A070 /* IndexPath+Extensions.swift in Sources */,
 				B5B2A0EA2129BC8C0063A070 /* BaseRepositoryProtocol.swift in Sources */,
+				B52724FB213D4F930061493C /* HomeCalculateFooterView.swift in Sources */,
 				B5B2A0EC2129BC990063A070 /* HomeCoordinator.swift in Sources */,
 				B5B2A1132129BCF70063A070 /* LoaderHUD.swift in Sources */,
 				B5B2A10D2129BCEB0063A070 /* UIImageView.swift in Sources */,
@@ -664,6 +687,7 @@
 				B5B2A10C2129BCEB0063A070 /* UIView+Extension.swift in Sources */,
 				967736A4213551220083109B /* HomeTableViewCell.swift in Sources */,
 				B5B2A1062129BCEB0063A070 /* NSObject+Extension.swift in Sources */,
+				B52724FF213D53EB0061493C /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

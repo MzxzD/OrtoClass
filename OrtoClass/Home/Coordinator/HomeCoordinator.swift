@@ -17,10 +17,26 @@ class HomeCoordinator: Coordinator{
         controller.VM = HomeViewModel()
         //Add ViewModel initialization.
         self.controller = controller
+        self.controller.VM.homeCoordinatorDelegate = self
        
     }
     func start() {
         presenter.pushViewController(controller, animated: true)
+    }
+    
+    
+}
+
+
+extension HomeCoordinator: HomeCoordinatorDelegate {
+    func openResultScreen() {
+        let resultScreen = ResultCoordinator(presenter: presenter)
+        resultScreen.start()
+        self.addChildCoordinator(childCoordinator: resultScreen)
+    }
+    
+    func viewControllerHasFinished() {
+        
     }
     
     
