@@ -83,7 +83,7 @@
 		A6CEFB4C3E00B769074BC009 /* Pods_OrtoClassTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrtoClassTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52724FA213D4F930061493C /* HomeCalculateFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCalculateFooterView.swift; sourceTree = "<group>"; };
 		B52724FC213D53C50061493C /* ResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultCoordinator.swift; path = OrtoClass/Home/UI/FooterView/ResultCoordinator.swift; sourceTree = SOURCE_ROOT; };
-		B52724FE213D53EB0061493C /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultViewController.swift; path = OrtoClass/Home/UI/FooterView/ResultViewController.swift; sourceTree = SOURCE_ROOT; };
+		B52724FE213D53EB0061493C /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultViewController.swift; path = OrtoClass/Result/UI/ResultViewController.swift; sourceTree = SOURCE_ROOT; };
 		B5272500213D54640061493C /* HomeCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorDelegate.swift; sourceTree = "<group>"; };
 		B5B2A0A72129BBF90063A070 /* OrtoClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrtoClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B2A0B62129BBFA0063A070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
