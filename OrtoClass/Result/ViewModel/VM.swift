@@ -38,7 +38,7 @@ class ResultVM: ResultVMProtocol{
                                                                                         "0",
                                                                                         "0",
                                                                                         "0",
-                                                                                        "Hernia"
+                                                                                        "Normal"
                                                                                     ],
                                                                                     ])), globalParameters: GlobalParameters())
     }
