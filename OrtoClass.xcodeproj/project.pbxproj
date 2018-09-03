@@ -16,6 +16,7 @@
 		B52724FD213D53C50061493C /* ResultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52724FC213D53C50061493C /* ResultCoordinator.swift */; };
 		B52724FF213D53EB0061493C /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52724FE213D53EB0061493C /* ResultViewController.swift */; };
 		B5272501213D54640061493C /* HomeCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5272500213D54640061493C /* HomeCoordinatorDelegate.swift */; };
+		B5272504213D59BB0061493C /* VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5272503213D59BB0061493C /* VM.swift */; };
 		B5B2A0C02129BBFA0063A070 /* OrtoClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0BF2129BBFA0063A070 /* OrtoClassTests.swift */; };
 		B5B2A0CB2129BBFA0063A070 /* OrtoClassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0CA2129BBFA0063A070 /* OrtoClassUITests.swift */; };
 		B5B2A0DD2129BC350063A070 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0DB2129BC350063A070 /* AppDelegate.swift */; };
@@ -82,9 +83,10 @@
 		9CBB81C49D379E2D2DE7D2B7 /* Pods-OrtoClassUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrtoClassUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OrtoClassUITests/Pods-OrtoClassUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A6CEFB4C3E00B769074BC009 /* Pods_OrtoClassTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrtoClassTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52724FA213D4F930061493C /* HomeCalculateFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCalculateFooterView.swift; sourceTree = "<group>"; };
-		B52724FC213D53C50061493C /* ResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultCoordinator.swift; path = OrtoClass/Home/UI/FooterView/ResultCoordinator.swift; sourceTree = SOURCE_ROOT; };
+		B52724FC213D53C50061493C /* ResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultCoordinator.swift; path = OrtoClass/Result/Coordinator/ResultCoordinator.swift; sourceTree = SOURCE_ROOT; };
 		B52724FE213D53EB0061493C /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultViewController.swift; path = OrtoClass/Result/UI/ResultViewController.swift; sourceTree = SOURCE_ROOT; };
 		B5272500213D54640061493C /* HomeCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorDelegate.swift; sourceTree = "<group>"; };
+		B5272503213D59BB0061493C /* VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VM.swift; sourceTree = "<group>"; };
 		B5B2A0A72129BBF90063A070 /* OrtoClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrtoClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B2A0B62129BBFA0063A070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5B2A0BB2129BBFA0063A070 /* OrtoClassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrtoClassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +201,7 @@
 		9636FD5B21354B21008917C4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B5272503213D59BB0061493C /* VM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 			files = (
 				B5B2A11F2129BD170063A070 /* TableSectionItem.swift in Sources */,
 				B5B2A1092129BCEB0063A070 /* Identifiable.swift in Sources */,
+				B5272504213D59BB0061493C /* VM.swift in Sources */,
 				B5B2A1082129BCEB0063A070 /* String+Extension.swift in Sources */,
 				B5B2A10B2129BCEB0063A070 /* TableView+Extension.swift in Sources */,
 				B5B2A0F82129BCCF0063A070 /* CoordinatorDelegate.swift in Sources */,
