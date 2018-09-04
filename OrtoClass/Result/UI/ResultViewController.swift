@@ -46,6 +46,7 @@ class ResultViewController: UIViewController, LoaderViewProtocol{
     }
     
     func setupUI() {
+        // AFTER LOADER - SETUP PIE
         self.view.addSubview(pieChart)
         setupConstraints()
     }

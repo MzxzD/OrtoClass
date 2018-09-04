@@ -27,10 +27,8 @@ typealias ItemsNamesArray = Array<ItemsNames>
 
 
 class HomeViewModel: HomeViewModelProtocol {
-//    var resultCoordinatorDelegate: ResultCoordinatorDelegate?
     var refreshView: PublishSubject<TableRefresh>
     let itemsNameArray : ItemsNamesArray = [(type: .PELVIC_INCIDENCE, name: "Pelvic Independence :"),(type: .PELVIC_TILT, name: "Pelvic Tilt :"),(type: .LUMBAR_LORDOSIS_ANGLE, name: "Lumbar lordosis angle :"),(type: .SACRAL_SLOPE, name: "Sacral Slope"),(type: .PELVIC_RADIUS, name: "Pelvic radius :"),(type: .DEGREE_SPONDYLOLISTHESIS, name: "Degree spondylolisthesis")     ]
-//    var itemNamesTableItem : [TableItem<TableTypes, ItemsNamesArray>]
     var itemsToPresent: [TableSectionItem<TableTypes, TableTypes, ItemsNames>] = []
     weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
     
@@ -55,16 +53,18 @@ class HomeViewModel: HomeViewModelProtocol {
 //        }else {
 //            triggerError(errorMessage: validateResultTuple.errorMessage)
 //        }
+        
+        // VALIDATE INPUT WITHIN REASONABLE RANGE
         homeCoordinatorDelegate?.openResultScreen()
         print("Button Tapped!")
     }
     
 }
 
+// ADD DELEGATE TO AUTOMACITALLY FILL DATA WHILE ITS ENTERING
 
 protocol HomeViewModelProtocol: TableRefreshViewModelProtocol {
     var itemsToPresent: [TableSectionItem<TableTypes, TableTypes, ItemsNames>] {get}
     var homeCoordinatorDelegate: HomeCoordinatorDelegate? {get set}
-//    func rowSelected(type: ItemsEnum)
     func validateAndOpenResultScreen()
 }

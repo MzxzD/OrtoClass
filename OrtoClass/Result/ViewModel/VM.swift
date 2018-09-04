@@ -26,7 +26,7 @@ class ResultVM: ResultVMProtocol{
     var chartData: PieChartData
     let colors = [UIColor.blue,UIColor.red, UIColor.yellow]
     
-    
+    // RECIVE OBJET TO SENT TO API
     init() {
         self.errorOccured = PublishSubject()
         self.loaderPublisher = PublishSubject()
@@ -40,7 +40,7 @@ class ResultVM: ResultVMProtocol{
         self.chartDataSet = PieChartDataSet(values: prabillityArray, label: "lol")
         self.chartDataSet.colors = colors
         self.chartData = PieChartData(dataSet: chartDataSet)
-
+        // REPLACE DUMMY OBJECT WITH OBJECT FROM PAST SCREEN
         self.result = ResultPostModel(inputs: Inputs(input1: Input1(columnNames: ["pelvic_incidence",
                                                                                   "pelvic_tilt",
                                                                                   "lumbar_lordosis_angle",
@@ -67,41 +67,26 @@ class ResultVM: ResultVMProtocol{
             self.loaderPublisher.onNext(true)
             return ResultRepository().postCalculatorResultsObservable(result: self.result)
         }
-        
+        // MAP AND PICK UP PROBABILITIES AND SAVE THEM INTO VALUES FOR PIE
         return resultPostObserver
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [unowned self] (response) in
                 print(response)
+                // FINISH LOADER AND SHOW PIE
             })
     }
-    
 
-    
     func startDownload() {
         self.refreshPublisher.onNext(true)
     }
     
-
-    
-    func openRecommendationScreen() {
-        
-    }
-
-    
-    
-    
 }
-
-
 
 protocol ResultVMProtocol: LoaderViewModelProtocol, TableRefreshViewModelProtocol {
     func initializeObservableResultDataAPI() -> Disposable
     var dataInitialized: PublishSubject<Bool> {get}
     func startDownload()
-//    var responseData: PostJSONResponse<CalculatorResponse>!{get}
-//    var calculatorResult: CalculatorPostModel {get set}
-    func openRecommendationScreen()
     var errorOccured: PublishSubject<String>{get}
     var chartData: PieChartData {get}
     
