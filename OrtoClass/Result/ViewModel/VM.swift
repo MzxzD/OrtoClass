@@ -8,6 +8,8 @@
 
 import Foundation
 import RxSwift
+import Charts
+
 
 class ResultVM: ResultVMProtocol{
     var errorOccured: PublishSubject<String>
@@ -16,6 +18,13 @@ class ResultVM: ResultVMProtocol{
     var dataInitialized: PublishSubject<Bool>
     var refreshPublisher: ReplaySubject<Bool>
     var result: ResultPostModel
+    var prabillityArray: [PieChartDataEntry]
+    var normalProbability: PieChartDataEntry = PieChartDataEntry(value: 0.125)
+    var herniaProbability: PieChartDataEntry = PieChartDataEntry(value: 0.875)
+    var splendylosisProbability: PieChartDataEntry = PieChartDataEntry(value: 0)
+    var chartDataSet: PieChartDataSet
+    var chartData: PieChartData
+    let colors = [UIColor.blue,UIColor.red, UIColor.yellow]
     
     
     init() {
@@ -24,6 +33,14 @@ class ResultVM: ResultVMProtocol{
         self.refreshView = PublishSubject()
         self.dataInitialized = PublishSubject()
         self.refreshPublisher = ReplaySubject<Bool>.create(bufferSize: 1)
+        normalProbability.label = "Normal"
+        herniaProbability.label = "Hernia"
+        splendylosisProbability.label = "Whatever"
+        self.prabillityArray = [normalProbability,herniaProbability, splendylosisProbability]
+        self.chartDataSet = PieChartDataSet(values: prabillityArray, label: "lol")
+        self.chartDataSet.colors = colors
+        self.chartData = PieChartData(dataSet: chartDataSet)
+
         self.result = ResultPostModel(inputs: Inputs(input1: Input1(columnNames: ["pelvic_incidence",
                                                                                   "pelvic_tilt",
                                                                                   "lumbar_lordosis_angle",
@@ -86,6 +103,6 @@ protocol ResultVMProtocol: LoaderViewModelProtocol, TableRefreshViewModelProtoco
 //    var calculatorResult: CalculatorPostModel {get set}
     func openRecommendationScreen()
     var errorOccured: PublishSubject<String>{get}
-    
+    var chartData: PieChartData {get}
     
 }
