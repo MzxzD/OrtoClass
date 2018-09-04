@@ -52,8 +52,7 @@ class ResultViewController: UIViewController, LoaderViewProtocol{
     
     func setupConstraints() {
         let constraints = [
-            pieChart.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            pieChart.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            pieChart.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             pieChart.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             pieChart.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             pieChart.heightAnchor.constraint(equalToConstant: 500),
