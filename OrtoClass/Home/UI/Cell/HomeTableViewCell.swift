@@ -12,8 +12,8 @@ import RxSwift
 class HomeTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     
-//    weak var tableRowDelegate: TableRowDelegate?
-//    weak var tableIndexPathDelegate: TableIndexPathDelegate?
+    weak var tableRowDelegate: TableRowDelegate?
+    weak var tableIndexPathDelegate: TableIndexPathDelegate?
     var disposeBag = DisposeBag()
     
     var unitTextField: UITextField = {
@@ -70,27 +70,27 @@ class HomeTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     
-//    func setupTextFieldChangeObserver(){
-//        unitTextField.rx.text.orEmpty
-//            .distinctUntilChanged({ (first, second) -> Bool in
-//                return  first == second
-//            })
-//            .skip(1) // skip first value
-//            .debounce(RxTimeInterval(0.5), scheduler: ConcurrentDispatchQueueScheduler(qos: .background)) //Time in seconds
-//            .asDriver(onErrorJustReturn: .empty) // Operacija se radi na mainThread-u
-//            .do(onNext: {[unowned self] (text) in
-//                guard  let tableIndexDelegate = self.tableIndexPathDelegate,
-//                    let tableDelegate = self.tableRowDelegate,
-//                    let rowIndex = tableIndexDelegate.getIndexPath(forTableCell: self)
-//                    else {
-//                        return
-//                }
-//
-//                tableDelegate.inputFinished(rowIndex:rowIndex,input: text)
-//            })
-//            .drive()
-//            .disposed(by: disposeBag)
-//    }
+    func setupTextFieldChangeObserver(){
+        unitTextField.rx.text.orEmpty
+            .distinctUntilChanged({ (first, second) -> Bool in
+                return  first == second
+            })
+            .skip(1) // skip first value
+            .debounce(RxTimeInterval(0.5), scheduler: ConcurrentDispatchQueueScheduler(qos: .background)) //Time in seconds
+            .asDriver(onErrorJustReturn: .empty) // Operacija se radi na mainThread-u
+            .do(onNext: {[unowned self] (text) in
+                guard  let tableIndexDelegate = self.tableIndexPathDelegate,
+                    let tableDelegate = self.tableRowDelegate,
+                    let rowIndex = tableIndexDelegate.getIndexPath(forTableCell: self)
+                    else {
+                        return
+                }
+
+                tableDelegate.inputFinished(indexPath:rowIndex,input: text)
+            })
+            .drive()
+            .disposed(by: disposeBag)
+    }
     
     private func setupUI(){
         self.contentView.addSubviews(unitTextField, unitLabel)

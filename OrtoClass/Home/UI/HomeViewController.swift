@@ -10,6 +10,8 @@ import UIKit
 import RxSwift
 
 class HomeViewController: UIViewController, TableRefreshView {
+
+    
     
     var tableView: UITableView! = {
         let tableView = UITableView()
@@ -38,6 +40,7 @@ class HomeViewController: UIViewController, TableRefreshView {
         setupView()
         calculateFooterView.validateAndOpenResultScreen = self
         self.title = "OrtoClass"
+        self.hideKeyboardWhenTappedAround()
 
     }
 
@@ -92,7 +95,9 @@ class HomeViewController: UIViewController, TableRefreshView {
 }
 
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource,TableIndexPathDelegate{
+
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return VM.itemsToPresent.count
     }
@@ -113,15 +118,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: HomeTableViewCell = tableView.dequeue(for: indexPath)
-        let dataForDisplay = VM.itemsToPresent[indexPath.section].items[indexPath.row].data
-//        cell.unitLabel.text = dataForDisplay.name
+//        let dataForDisplay = VM.itemsToPresent[indexPath.section].items[indexPath.row].data
+        cell.setupTextFieldChangeObserver()
+        cell.tableRowDelegate = VM
+        cell.tableIndexPathDelegate = self
         cell.selectionStyle = .none
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedValue = VM.itemsToPresent[indexPath.section].items[indexPath.row].data
+//        let selectedValue = VM.itemsToPresent[indexPath.section].items[indexPath.row].data
 //        self.menuViewModel.rowSelected(type: selectedValue.type)
     }
 }
@@ -130,5 +137,22 @@ extension HomeViewController: ValidateAndOpenResultScreenDelegate {
     func calculateButtonTapped() {
         VM.validateAndOpenResultScreen()
     }
+    
+    func getIndexPath(forTableCell cell: UITableViewCell) -> IndexPath? {
+        return tableView.indexPath(for: cell)
+    }
+}
+
+extension UIViewController {
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
 }
 

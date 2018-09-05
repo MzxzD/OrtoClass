@@ -11,10 +11,10 @@ class ResultCoordinator: Coordinator{
     var childCoordinators: [Coordinator] = []
     var presenter: UINavigationController
     let controller: ResultViewController
-    init (presenter: UINavigationController){
+    init (presenter: UINavigationController, data: [String] ){
         self.presenter = presenter
         let controller = ResultViewController()
-        let resultVM = ResultVM()
+        let resultVM = ResultVM(data: data)
         controller.VM = resultVM
         //Add ViewModel initialization.
         self.controller = controller

@@ -9,6 +9,6 @@
 import Foundation
 
 protocol HomeCoordinatorDelegate: CoordinatorDelegate {
-    func openResultScreen()
+    func openResultScreen(dataToSend: [String])
     // Dodati model za POST slanje
 }

@@ -31,7 +31,7 @@ class HomeViewModel: HomeViewModelProtocol {
     let itemsNameArray : ItemsNamesArray = [(type: .PELVIC_INCIDENCE, name: "Pelvic Independence :"),(type: .PELVIC_TILT, name: "Pelvic Tilt :"),(type: .LUMBAR_LORDOSIS_ANGLE, name: "Lumbar lordosis angle :"),(type: .SACRAL_SLOPE, name: "Sacral Slope"),(type: .PELVIC_RADIUS, name: "Pelvic radius :"),(type: .DEGREE_SPONDYLOLISTHESIS, name: "Degree spondylolisthesis")     ]
     var itemsToPresent: [TableSectionItem<TableTypes, TableTypes, ItemsNames>] = []
     weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
-    
+    var values: [String] = ["0","0","0","0","0","0", "Normal"]
     
     
     init() {
@@ -55,16 +55,73 @@ class HomeViewModel: HomeViewModelProtocol {
 //        }
         
         // VALIDATE INPUT WITHIN REASONABLE RANGE
-        homeCoordinatorDelegate?.openResultScreen()
+        homeCoordinatorDelegate?.openResultScreen(dataToSend: self.values)
         print("Button Tapped!")
+    }
+    
+    
+    func inputFinished(indexPath: IndexPath, input: String) {
+        let dataToSave = itemsToPresent[indexPath.section].items[indexPath.row].data
+        switch dataToSave.type {
+        case .PELVIC_INCIDENCE:
+            if input.isEmpty{
+            self.values[0] = "0"
+            }else{
+                self.values[0] = input
+            }
+        case .PELVIC_TILT:
+            if input.isEmpty{
+                self.values[1] = "0"
+            }else{
+                self.values[1] = input
+
+            }
+        case .LUMBAR_LORDOSIS_ANGLE:
+            if input.isEmpty{
+                self.values[2] = "0"
+            }else{
+                self.values[2] = input
+            }
+        case .SACRAL_SLOPE:
+            if input.isEmpty{
+                self.values[3] = "0"
+            }else {
+                 self.values[3] = input
+            }
+           
+        case .PELVIC_RADIUS:
+            if input.isEmpty{
+                self.values[4] = "0"
+            }else {
+                self.values[4] = input
+            }
+            
+        case .DEGREE_SPONDYLOLISTHESIS:
+            if input.isEmpty{
+                self.values[5] = "0"
+            }else {
+                self.values[5] = input
+            }
+         
+        }
+        print(self.values)
     }
     
 }
 
 // ADD DELEGATE TO AUTOMACITALLY FILL DATA WHILE ITS ENTERING
 
-protocol HomeViewModelProtocol: TableRefreshViewModelProtocol {
+protocol HomeViewModelProtocol: TableRefreshViewModelProtocol, TableRowDelegate {
     var itemsToPresent: [TableSectionItem<TableTypes, TableTypes, ItemsNames>] {get}
     var homeCoordinatorDelegate: HomeCoordinatorDelegate? {get set}
     func validateAndOpenResultScreen()
+}
+
+public protocol TableIndexPathDelegate: class {
+    func getIndexPath(forTableCell cell: UITableViewCell ) -> IndexPath?
+    
+}
+
+public protocol TableRowDelegate: class {
+    func inputFinished(indexPath:IndexPath ,input: String)
 }

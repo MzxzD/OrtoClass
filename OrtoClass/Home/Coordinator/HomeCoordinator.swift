@@ -29,8 +29,8 @@ class HomeCoordinator: Coordinator{
 
 
 extension HomeCoordinator: HomeCoordinatorDelegate {
-    func openResultScreen() {
-        let resultScreen = ResultCoordinator(presenter: presenter)
+    func openResultScreen(dataToSend: [String]) {
+        let resultScreen = ResultCoordinator(presenter: presenter, data: dataToSend)
         resultScreen.start()
         self.addChildCoordinator(childCoordinator: resultScreen)
     }
