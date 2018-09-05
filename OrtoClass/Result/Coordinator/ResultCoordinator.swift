@@ -12,7 +12,7 @@ class ResultCoordinator: Coordinator{
     var presenter: UINavigationController
     let controller: ResultViewController
     init (presenter: UINavigationController, data: [String] ){
-        self.presenter = presenter
+        self.presenter = presenter        
         let controller = ResultViewController()
         let resultVM = ResultVM(data: data)
         controller.VM = resultVM

@@ -47,7 +47,7 @@ class HomeViewController: UIViewController, TableRefreshView {
     func setupView() {
         view.backgroundColor = .white
         let tableContentView = UIView()
-        view.addSubviews(headerView,tableContentView, calculateFooterView)
+        view.addSubviews(tableContentView, calculateFooterView)
         tableContentView.frame = view.bounds
         tableContentView.backgroundColor = .clear
         tableContentView.addSubview(tableView)
@@ -75,11 +75,11 @@ class HomeViewController: UIViewController, TableRefreshView {
     
     func setupConstraints(){
         let constraints = [
-            headerView.topAnchor.constraint(equalTo: view.topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            headerView.topAnchor.constraint(equalTo: view.topAnchor),
+//            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 15),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: calculateFooterView.topAnchor, constant: 15),
@@ -111,7 +111,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource,TableIn
         let header: CellHeaderFooterView = tableView.dequeueHeaderFooterView()
         let sectionTitle = VM.itemsToPresent[section].items[0].data
         header.sectionTitleLabel.text = sectionTitle.name
-        
         
         return header
     }

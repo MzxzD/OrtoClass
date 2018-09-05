@@ -13,7 +13,7 @@ class CalculateFooterView: UIView {
     var calculateButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .blue
+        button.backgroundColor = UIColor(red:0.12, green:0.77, blue:1.00, alpha:1.0)
 //        let text = Theme.Styles.Text.Semibold.bigger.whiteColor
 //        button.setTitleColor(text.textColor, for: .normal)
         button.setTitleColor(.black, for: .selected)

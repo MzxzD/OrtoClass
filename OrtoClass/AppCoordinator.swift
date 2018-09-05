@@ -17,6 +17,11 @@ class AppCoordinator: Coordinator{
     init(window: UIWindow) {
         self.window = window
         presenter = UINavigationController()
+        presenter.navigationBar.barTintColor = UIColor(red:0.12, green:0.77, blue:1.00, alpha:1.0)
+        presenter.navigationItem.backBarButtonItem?.tintColor = .white
+        presenter.navigationItem.leftBarButtonItem?.tintColor = .white
+        
+
         
     }
     

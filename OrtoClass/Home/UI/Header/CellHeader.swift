@@ -7,9 +7,9 @@ class CellHeaderFooterView: UITableViewHeaderFooterView {
     let sectionTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.applyStyle(Theme.Styles.Text.Semibold.normal.blackColor)d
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
+        label.textColor = .white
         return label
     }()
     override init(reuseIdentifier: String?) {
@@ -23,8 +23,8 @@ class CellHeaderFooterView: UITableViewHeaderFooterView {
     }
     
     private func setupUI(){
-//        contentView.backgroundColor = UIColor.lightGrayColor
         contentView.addSubviews(sectionTitleLabel)
+        contentView.backgroundColor = UIColor(red:0.12, green:0.77, blue:1.00, alpha:1.0)
         setupConstraints()
     }
     

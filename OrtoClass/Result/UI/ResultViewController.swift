@@ -65,13 +65,13 @@ class ResultViewController: UIViewController, LoaderViewProtocol{
             pieChart.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             pieChart.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             pieChart.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            pieChart.heightAnchor.constraint(equalToConstant: 500),
+            pieChart.heightAnchor.constraint(equalToConstant: 350),
             
             resultLabel.bottomAnchor.constraint(equalTo: pieChart.topAnchor, constant: 10),
             resultLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             resultLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             resultLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            resultLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            resultLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             
             
             ]

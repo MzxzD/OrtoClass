@@ -30,7 +30,7 @@ class HeaderView: UIView {
     
     private func setupUI() {
         self.addSubview(titleLabel)
-        backgroundColor = .gray
+        backgroundColor = UIColor(red:0.12, green:0.77, blue:1.00, alpha:1.0)
         setupConstraints()
     }
     
