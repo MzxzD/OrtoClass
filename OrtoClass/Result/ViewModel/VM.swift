@@ -65,9 +65,14 @@ class ResultVM: ResultVMProtocol{
             })
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [unowned self] (resultArray) in
+            
+            .subscribe(onNext: {  [unowned self] (resultArray)  in
                 self.generateData(resultArray)
                 self.loaderPublisher.onNext(false)
+                self.dataInitialized.onNext(true)
+                }, onError: { (error) in
+                    self.errorOccured.onNext(error.localizedDescription)
+                    self.loaderPublisher.onNext(false)
             })
     }
 
@@ -101,7 +106,7 @@ protocol ResultVMProtocol: LoaderViewModelProtocol, TableRefreshViewModelProtoco
     var dataInitialized: PublishSubject<Bool> {get}
     func startDownload()
     var resultTuple:(name: String, value: String)! {get}
-    var errorOccured: PublishSubject<String>{get}
+    var errorOccured: PublishSubject<String> {get}
     var chartData: PieChartData! {get}
     
 }

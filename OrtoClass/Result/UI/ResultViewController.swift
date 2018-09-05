@@ -38,23 +38,23 @@ class ResultViewController: UIViewController, LoaderViewProtocol{
         view.backgroundColor = .white
         initializeData()
         setupUI()
-        // Do any additional setup after loading the view.
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         VM.startDownload()
-       
+        
     }
     
-
+    
     func initializeData(){
         initializeLoaderObserver(VM.loaderPublisher)
         VM.initializeObservableResultDataAPI().disposed(by: disposeBag)
+        initializeError()
+        initializeDataObserver()
     }
     
     func setupUI() {
-        // AFTER LOADER - SETUP PIE
         self.view.addSubviews(resultLabel, pieChart)
         setupConstraints()
     }
@@ -78,6 +78,18 @@ class ResultViewController: UIViewController, LoaderViewProtocol{
         NSLayoutConstraint.activate(constraints)
         
     }
+    
+    func initializeError() {
+        let errorObserver = VM.errorOccured
+        errorObserver
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [unowned self] (event) in
+                ErrorAlert().alert(viewToPresent: self, title: .empty, message: event)
+            })
+            .disposed(by: disposeBag)
+    }
+    
     func initializeLoaderObserver(_ loaderObservable: Observable<Bool>){
         loaderObservable
             .asDriver(onErrorJustReturn: false)
@@ -85,15 +97,28 @@ class ResultViewController: UIViewController, LoaderViewProtocol{
                 if(showLoader){
                     self.showLoader()
                 }else {
-                    let attributes :Dictionary = [NSAttributedStringKey.font : self.labelFont]
+                    
                     self.dismissLoader()
-                    self.resultLabel.attributedText = NSAttributedString(string: "There's \(self.VM.resultTuple.value)% chance that you have \(self.VM.resultTuple.name)", attributes:attributes)
-                    self.pieChart.data = self.VM.chartData
                     
                 }
             })
             .drive()
             .disposed(by: disposeBag)
     }
+    
+    func initializeDataObserver() {
+        let observer = VM.dataInitialized
+        observer
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [unowned self] (event) in
+                let attributes :Dictionary = [NSAttributedStringKey.font : self.labelFont]
+                self.resultLabel.attributedText = NSAttributedString(string: "There's \(self.VM.resultTuple.value)% chance that you have \(self.VM.resultTuple.name)", attributes:attributes)
+                self.pieChart.data = self.VM.chartData
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    
 }
 
