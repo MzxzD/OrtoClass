@@ -51,6 +51,10 @@
 		B5B2A11F2129BD170063A070 /* TableSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A11C2129BD170063A070 /* TableSectionItem.swift */; };
 		B5B2A1222129BD210063A070 /* TableRefreshViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A1202129BD210063A070 /* TableRefreshViewModel.swift */; };
 		B5B2A1232129BD210063A070 /* TableRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A1212129BD210063A070 /* TableRefreshView.swift */; };
+		B5D5BC772141B27C00B0E0CB /* PatientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5BC762141B27C00B0E0CB /* PatientCollectionViewCell.swift */; };
+		B5D5BC792141B29500B0E0CB /* PatientCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5BC782141B29500B0E0CB /* PatientCollectionViewController.swift */; };
+		B5D5BC7B2141B4FE00B0E0CB /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5BC7A2141B4FE00B0E0CB /* CALayer+Extension.swift */; };
+		B5D5BC7D2141B93D00B0E0CB /* PatientsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5BC7C2141B93D00B0E0CB /* PatientsCoordinator.swift */; };
 		B5E90D55213D621E0028EA56 /* ResultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E90D54213D621E0028EA56 /* ResultRepository.swift */; };
 		B5E90D57213D648B0028EA56 /* ResultPOSTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E90D56213D648B0028EA56 /* ResultPOSTModel.swift */; };
 		B5E90D59213D64FA0028EA56 /* POSTJsonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E90D58213D64FA0028EA56 /* POSTJsonResponse.swift */; };
@@ -131,6 +135,10 @@
 		B5B2A11C2129BD170063A070 /* TableSectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableSectionItem.swift; sourceTree = "<group>"; };
 		B5B2A1202129BD210063A070 /* TableRefreshViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableRefreshViewModel.swift; sourceTree = "<group>"; };
 		B5B2A1212129BD210063A070 /* TableRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableRefreshView.swift; sourceTree = "<group>"; };
+		B5D5BC762141B27C00B0E0CB /* PatientCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5D5BC782141B29500B0E0CB /* PatientCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientCollectionViewController.swift; sourceTree = "<group>"; };
+		B5D5BC7A2141B4FE00B0E0CB /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
+		B5D5BC7C2141B93D00B0E0CB /* PatientsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsCoordinator.swift; sourceTree = "<group>"; };
 		B5E90D54213D621E0028EA56 /* ResultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRepository.swift; sourceTree = "<group>"; };
 		B5E90D56213D648B0028EA56 /* ResultPOSTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPOSTModel.swift; sourceTree = "<group>"; };
 		B5E90D58213D64FA0028EA56 /* POSTJsonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POSTJsonResponse.swift; sourceTree = "<group>"; };
@@ -272,6 +280,7 @@
 		B5B2A0A92129BBF90063A070 /* OrtoClass */ = {
 			isa = PBXGroup;
 			children = (
+				B5D5BC712141B22500B0E0CB /* List Of Patient */,
 				9636FD5921354B03008917C4 /* Result */,
 				B5B2A0DA2129BC200063A070 /* Models */,
 				B5B2A0D92129BC1A0063A070 /* Home */,
@@ -424,6 +433,7 @@
 				B5B2A1032129BCEA0063A070 /* TableView+Extension.swift */,
 				B5B2A1052129BCEA0063A070 /* UIImageView.swift */,
 				B5B2A1042129BCEA0063A070 /* UIView+Extension.swift */,
+				B5D5BC7A2141B4FE00B0E0CB /* CALayer+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -445,6 +455,48 @@
 				B5B2A1202129BD210063A070 /* TableRefreshViewModel.swift */,
 			);
 			path = TableRefresh;
+			sourceTree = "<group>";
+		};
+		B5D5BC712141B22500B0E0CB /* List Of Patient */ = {
+			isa = PBXGroup;
+			children = (
+				B5D5BC742141B24200B0E0CB /* ViewModel */,
+				B5D5BC732141B23E00B0E0CB /* UI */,
+				B5D5BC722141B23600B0E0CB /* Coordinator */,
+			);
+			path = "List Of Patient";
+			sourceTree = "<group>";
+		};
+		B5D5BC722141B23600B0E0CB /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B5D5BC7C2141B93D00B0E0CB /* PatientsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B5D5BC732141B23E00B0E0CB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B5D5BC752141B25100B0E0CB /* CollectionViewCell */,
+				B5D5BC782141B29500B0E0CB /* PatientCollectionViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		B5D5BC742141B24200B0E0CB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B5D5BC752141B25100B0E0CB /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B5D5BC762141B27C00B0E0CB /* PatientCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		B5E90D53213D62030028EA56 /* Repositories */ = {
@@ -687,10 +739,12 @@
 				B58FD6FD21402E000012F02A /* ErrorAlert.swift in Sources */,
 				B5B2A1082129BCEB0063A070 /* String+Extension.swift in Sources */,
 				B5B2A10B2129BCEB0063A070 /* TableView+Extension.swift in Sources */,
+				B5D5BC772141B27C00B0E0CB /* PatientCollectionViewCell.swift in Sources */,
 				B5B2A0F82129BCCF0063A070 /* CoordinatorDelegate.swift in Sources */,
 				B5B2A0E82129BC8C0063A070 /* RestEndpoints.swift in Sources */,
 				B5B2A0F02129BCA90063A070 /* HomeViewModel.swift in Sources */,
 				B5E90D55213D621E0028EA56 /* ResultRepository.swift in Sources */,
+				B5D5BC792141B29500B0E0CB /* PatientCollectionViewController.swift in Sources */,
 				B5B2A0F72129BCCF0063A070 /* Coordinator.swift in Sources */,
 				967736A92135540A0083109B /* CellHeader.swift in Sources */,
 				B5B2A11D2129BD170063A070 /* TableItem.swift in Sources */,
@@ -706,7 +760,9 @@
 				B5272501213D54640061493C /* HomeCoordinatorDelegate.swift in Sources */,
 				B5B2A0DD2129BC350063A070 /* AppDelegate.swift in Sources */,
 				B5B2A1172129BCF70063A070 /* SpinnerView.swift in Sources */,
+				B5D5BC7B2141B4FE00B0E0CB /* CALayer+Extension.swift in Sources */,
 				B5B2A1162129BCF70063A070 /* LoaderOverlayView.swift in Sources */,
+				B5D5BC7D2141B93D00B0E0CB /* PatientsCoordinator.swift in Sources */,
 				B52724FD213D53C50061493C /* ResultCoordinator.swift in Sources */,
 				B5B2A1222129BD210063A070 /* TableRefreshViewModel.swift in Sources */,
 				B5B2A1072129BCEB0063A070 /* IndexPath+Extensions.swift in Sources */,
