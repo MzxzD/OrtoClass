@@ -35,7 +35,7 @@ class PatientCollectionViewCell: UITableViewCell {
     var patientPredictedSymptomLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Normal"
+        label.text = "Predicted Symptom: Normal"
         return label
     }()
     
@@ -51,6 +51,8 @@ class PatientCollectionViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "0%"
+        label.textColor = .blue
+
         return label
         
     }()
@@ -75,6 +77,7 @@ class PatientCollectionViewCell: UITableViewCell {
     var herniaProbabilityLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .red
         label.text = "0%"
         return label
         
@@ -101,6 +104,8 @@ class PatientCollectionViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "0%"
+        label.textColor = UIColor(red:0.51, green:0.58, blue:0.34, alpha:1.0)
+
         return label
         
     }()
@@ -143,13 +148,14 @@ class PatientCollectionViewCell: UITableViewCell {
         view.layer.addBorder(edge: UIRectEdge.left, color: color, thickness: 2)
         view.layer.addBorder(edge: UIRectEdge.top, color: color, thickness: 2)
         view.layer.addBorder(edge: UIRectEdge.bottom, color: color, thickness: 2)
+        let layer = view.layer
         return view
     }()
     
     var stackViewProbabilityScore: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.distribution = .fill
+        stackView.distribution = .equalSpacing
         stackView.axis = .horizontal
         stackView.alignment = .center
         return stackView
@@ -163,13 +169,10 @@ class PatientCollectionViewCell: UITableViewCell {
   
 
         contentView.addSubviews(patientName, patientPredictedSymptomLabel,stackViewProbabilityScore) // stackViewNormal) //, containerHerniaView, containerspondylolisthesisView)
-//        containerNormalView.addSubview(stackViewNormal)
         stackViewNormal.addArrangedSubview(normalLabel)
         stackViewNormal.addArrangedSubview(normalProbabilityLabel)
-//        containerHerniaView.addSubview(stackViewHernia)
         stackViewHernia.addArrangedSubview(herniaLabel)
         stackViewHernia.addArrangedSubview(herniaProbabilityLabel)
-//        containerspondylolisthesisView.addSubview(stackViewSpondylolisthesis)
         stackViewSpondylolisthesis.addArrangedSubview(spondylolisthesisLabel)
         stackViewSpondylolisthesis.addArrangedSubview(spondylolisthesisProbabilityLabel)
         stackViewProbabilityScore.addArrangedSubview(stackViewNormal)
@@ -180,9 +183,27 @@ class PatientCollectionViewCell: UITableViewCell {
     }
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
-//        self.containerView.layer.addBorder(edge: UIRectEdge.left, color: .gray, thickness: 2)
-//        self.containerView.layer.addBorder(edge: UIRectEdge.right, color: .gray, thickness: 2)
+//        stackViewNormal.layer.addBorder(edge: UIRectEdge.right, color: PatientCollectionViewCell.color, thickness: 2)
+//        stackViewNormal.layer.addBorder(edge: UIRectEdge.left, color: PatientCollectionViewCell.color, thickness: 2)
+//        stackViewNormal.layer.addBorder(edge: UIRectEdge.top, color: PatientCollectionViewCell.color, thickness: 2)
+//        stackViewNormal.layer.addBorder(edge: UIRectEdge.bottom, color: PatientCollectionViewCell.color, thickness: 2)
+//
+//        stackViewHernia.layer.addBorder(edge: UIRectEdge.right, color: PatientCollectionViewCell.color, thickness: 2)
+//        stackViewHernia.layer.addBorder(edge: UIRectEdge.left, color: PatientCollectionViewCell.color, thickness: 2)
+//        stackViewHernia.layer.addBorder(edge: UIRectEdge.top, color: PatientCollectionViewCell.color, thickness: 2)
+//        stackViewHernia.layer.addBorder(edge: UIRectEdge.bottom, color: PatientCollectionViewCell.color, thickness: 2)
+//
+//
+//        stackViewSpondylolisthesis.layer.addBorder(edge: UIRectEdge.right, color: PatientCollectionViewCell.color, thickness: 2)
+//        stackViewSpondylolisthesis.layer.addBorder(edge: UIRectEdge.left, color: PatientCollectionViewCell.color, thickness: 2)
+//        stackViewSpondylolisthesis.layer.addBorder(edge: UIRectEdge.top, color: PatientCollectionViewCell.color, thickness: 2)
+//        stackViewSpondylolisthesis.layer.addBorder(edge: UIRectEdge.bottom, color: PatientCollectionViewCell.color, thickness: 2)
+        
+        
     }
+    
+    
+
     
     private func setupConstraints(){
         

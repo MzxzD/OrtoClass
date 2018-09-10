@@ -11,6 +11,15 @@ import UIKit
 
 extension CALayer {
     
+    func getBorder()
+    {
+        let layer = CALayer()
+        layer.addBorder(edge: UIRectEdge.right, color: PatientCollectionViewCell.color, thickness: 2)
+        layer.addBorder(edge: UIRectEdge.left, color: PatientCollectionViewCell.color, thickness: 2)
+        layer.addBorder(edge: UIRectEdge.top, color: PatientCollectionViewCell.color, thickness: 2)
+        layer.addBorder(edge: UIRectEdge.bottom, color: PatientCollectionViewCell.color, thickness: 2)
+    }
+    
     func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat) {
         
         let border = CALayer()

@@ -17,6 +17,8 @@
 		B52724FF213D53EB0061493C /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52724FE213D53EB0061493C /* ResultViewController.swift */; };
 		B5272501213D54640061493C /* HomeCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5272500213D54640061493C /* HomeCoordinatorDelegate.swift */; };
 		B5272504213D59BB0061493C /* VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5272503213D59BB0061493C /* VM.swift */; };
+		B5545F26214652CC005BEE1A /* PatientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5545F25214652CC005BEE1A /* PatientModel.swift */; };
+		B5545F2821465541005BEE1A /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5545F2721465541005BEE1A /* RealmRepository.swift */; };
 		B58FD6FD21402E000012F02A /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FD6FC21402E000012F02A /* ErrorAlert.swift */; };
 		B5B2A0C02129BBFA0063A070 /* OrtoClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0BF2129BBFA0063A070 /* OrtoClassTests.swift */; };
 		B5B2A0CB2129BBFA0063A070 /* OrtoClassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0CA2129BBFA0063A070 /* OrtoClassUITests.swift */; };
@@ -95,6 +97,8 @@
 		B52724FE213D53EB0061493C /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultViewController.swift; path = OrtoClass/Result/UI/ResultViewController.swift; sourceTree = SOURCE_ROOT; };
 		B5272500213D54640061493C /* HomeCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorDelegate.swift; sourceTree = "<group>"; };
 		B5272503213D59BB0061493C /* VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VM.swift; sourceTree = "<group>"; };
+		B5545F25214652CC005BEE1A /* PatientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientModel.swift; sourceTree = "<group>"; };
+		B5545F2721465541005BEE1A /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		B58FD6FC21402E000012F02A /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		B5B2A0A72129BBF90063A070 /* OrtoClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrtoClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B2A0B62129BBFA0063A070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -339,6 +343,7 @@
 				B5B2A0E22129BC7C0063A070 /* Base */,
 				B5E90D56213D648B0028EA56 /* ResultPOSTModel.swift */,
 				B5E90D58213D64FA0028EA56 /* POSTJsonResponse.swift */,
+				B5545F25214652CC005BEE1A /* PatientModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -503,6 +508,7 @@
 			isa = PBXGroup;
 			children = (
 				B5E90D54213D621E0028EA56 /* ResultRepository.swift */,
+				B5545F2721465541005BEE1A /* RealmRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -737,6 +743,7 @@
 				B5B2A1092129BCEB0063A070 /* Identifiable.swift in Sources */,
 				B5272504213D59BB0061493C /* VM.swift in Sources */,
 				B58FD6FD21402E000012F02A /* ErrorAlert.swift in Sources */,
+				B5545F2821465541005BEE1A /* RealmRepository.swift in Sources */,
 				B5B2A1082129BCEB0063A070 /* String+Extension.swift in Sources */,
 				B5B2A10B2129BCEB0063A070 /* TableView+Extension.swift in Sources */,
 				B5D5BC772141B27C00B0E0CB /* PatientCollectionViewCell.swift in Sources */,
@@ -752,6 +759,7 @@
 				B5B2A0E72129BC8C0063A070 /* RestManager.swift in Sources */,
 				B5E90D59213D64FA0028EA56 /* POSTJsonResponse.swift in Sources */,
 				B5B2A10A2129BCEB0063A070 /* Collection+Extension.swift in Sources */,
+				B5545F26214652CC005BEE1A /* PatientModel.swift in Sources */,
 				B5B2A0DE2129BC350063A070 /* AppCoordinator.swift in Sources */,
 				B5B2A11E2129BD170063A070 /* TableRefresh.swift in Sources */,
 				B5B2A0EE2129BCA10063A070 /* HomeViewController.swift in Sources */,
