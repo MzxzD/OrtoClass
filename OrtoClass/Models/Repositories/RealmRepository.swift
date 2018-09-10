@@ -38,7 +38,7 @@ class RealmSerivce {
         return true
     }
     
-    func getCityLocations() -> (Observable<[Patient]>){
+    func getPatients() -> (Observable<[Patient]>){
         var patients: [Patient] = []
         let realmPatients = self.realm.objects(Patient.self)
         for patient in realmPatients {

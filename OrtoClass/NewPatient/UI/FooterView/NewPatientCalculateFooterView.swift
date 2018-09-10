@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalculateFooterView: UIView {
+class NewPatientCalculateFooterView: UIView {
     weak var validateAndOpenResultScreen: ValidateAndOpenResultScreenDelegate?
     var calculateButton: UIButton = {
         let button = UIButton()

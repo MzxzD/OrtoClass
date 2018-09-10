@@ -7,15 +7,50 @@
 //
 
 import UIKit
+import RxSwift
 
 private let reuseIdentifier = "Cell"
 
-class PatientCollectionViewController: UITableViewController {
+class PatientCollectionViewController: UITableViewController, TableRefreshView, LoaderViewProtocol {
+    let disposeBag = DisposeBag()
 
+    var VM: PatientViewModelProtocol!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        initializeData()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        self.title = "OrtoClass"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        startGettingDataFromRealm()
+    }
+    
+    func initializeData() {
+        initializeRefreshDriver(refreshObservable: VM.refreshView)
+        initializeLoaderObserver(VM.loaderPublisher)
+        VM.getStoredPatients().disposed(by: disposeBag)
 
+    }
+    
+//    func initializeRealmObservable() {
+//        let observer = VM.dataIsReady
+//        observer
+//            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(onNext: { [unowned self] (event) in
+//                if event {
+//                    self.tableView.reloadData()
+//                }
+//            }).disposed(by: disposeBag)
+//    }
+
+    
+    func startGettingDataFromRealm() {
+        VM.getDataFromRealm()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -23,13 +58,17 @@ class PatientCollectionViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return VM.patients.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+            let patientData = VM.patients[indexPath.row]
             let cell: PatientCollectionViewCell = tableView.dequeue(for: indexPath)
+            cell.patientName.text = patientData.patientName
+            cell.normalProbabilityLabel.text = patientData.normalProbability
+            cell.spondylolisthesisProbabilityLabel.text = patientData.spondylolisthesisProbability
+            cell.herniaProbabilityLabel.text = patientData.herniaProbability
             return cell
         }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -52,5 +91,9 @@ class PatientCollectionViewController: UITableViewController {
             self.tableView.rowHeight = 45
             
         }
+    }
+    
+    @objc func addTapped() {
+        VM.openNewPatientScreen()
     }
 }

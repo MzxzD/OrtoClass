@@ -12,7 +12,7 @@
 		967736A72135528A0083109B /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967736A62135528A0083109B /* Header.swift */; };
 		967736A92135540A0083109B /* CellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967736A82135540A0083109B /* CellHeader.swift */; };
 		A8B60F0BEDC098EAA633A9B0 /* Pods_OrtoClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB7E6B9615C1955A3241668 /* Pods_OrtoClass.framework */; };
-		B52724FB213D4F930061493C /* HomeCalculateFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52724FA213D4F930061493C /* HomeCalculateFooterView.swift */; };
+		B52724FB213D4F930061493C /* NewPatientCalculateFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52724FA213D4F930061493C /* NewPatientCalculateFooterView.swift */; };
 		B52724FD213D53C50061493C /* ResultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52724FC213D53C50061493C /* ResultCoordinator.swift */; };
 		B52724FF213D53EB0061493C /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52724FE213D53EB0061493C /* ResultViewController.swift */; };
 		B5272501213D54640061493C /* HomeCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5272500213D54640061493C /* HomeCoordinatorDelegate.swift */; };
@@ -20,6 +20,8 @@
 		B5545F26214652CC005BEE1A /* PatientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5545F25214652CC005BEE1A /* PatientModel.swift */; };
 		B5545F2821465541005BEE1A /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5545F2721465541005BEE1A /* RealmRepository.swift */; };
 		B58FD6FD21402E000012F02A /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FD6FC21402E000012F02A /* ErrorAlert.swift */; };
+		B5A450892147025B009FD120 /* PatientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A450882147025B009FD120 /* PatientViewModel.swift */; };
+		B5A4508B214702F6009FD120 /* PatientCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4508A214702F6009FD120 /* PatientCoordinatorDelegate.swift */; };
 		B5B2A0C02129BBFA0063A070 /* OrtoClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0BF2129BBFA0063A070 /* OrtoClassTests.swift */; };
 		B5B2A0CB2129BBFA0063A070 /* OrtoClassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0CA2129BBFA0063A070 /* OrtoClassUITests.swift */; };
 		B5B2A0DD2129BC350063A070 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0DB2129BC350063A070 /* AppDelegate.swift */; };
@@ -28,9 +30,9 @@
 		B5B2A0E82129BC8C0063A070 /* RestEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0E42129BC8C0063A070 /* RestEndpoints.swift */; };
 		B5B2A0E92129BC8C0063A070 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0E52129BC8C0063A070 /* NetworkError.swift */; };
 		B5B2A0EA2129BC8C0063A070 /* BaseRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0E62129BC8C0063A070 /* BaseRepositoryProtocol.swift */; };
-		B5B2A0EC2129BC990063A070 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0EB2129BC990063A070 /* HomeCoordinator.swift */; };
-		B5B2A0EE2129BCA10063A070 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0ED2129BCA10063A070 /* HomeViewController.swift */; };
-		B5B2A0F02129BCA90063A070 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0EF2129BCA90063A070 /* HomeViewModel.swift */; };
+		B5B2A0EC2129BC990063A070 /* NewPatientCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0EB2129BC990063A070 /* NewPatientCoordinator.swift */; };
+		B5B2A0EE2129BCA10063A070 /* NewPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0ED2129BCA10063A070 /* NewPatientViewController.swift */; };
+		B5B2A0F02129BCA90063A070 /* NewPatientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0EF2129BCA90063A070 /* NewPatientViewModel.swift */; };
 		B5B2A0F72129BCCF0063A070 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0F52129BCCE0063A070 /* Coordinator.swift */; };
 		B5B2A0F82129BCCF0063A070 /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0F62129BCCF0063A070 /* CoordinatorDelegate.swift */; };
 		B5B2A0FB2129BCD70063A070 /* DataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B2A0F92129BCD70063A070 /* DataWrapper.swift */; };
@@ -92,7 +94,7 @@
 		967736A82135540A0083109B /* CellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellHeader.swift; sourceTree = "<group>"; };
 		9CBB81C49D379E2D2DE7D2B7 /* Pods-OrtoClassUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrtoClassUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OrtoClassUITests/Pods-OrtoClassUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A6CEFB4C3E00B769074BC009 /* Pods_OrtoClassTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrtoClassTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B52724FA213D4F930061493C /* HomeCalculateFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCalculateFooterView.swift; sourceTree = "<group>"; };
+		B52724FA213D4F930061493C /* NewPatientCalculateFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPatientCalculateFooterView.swift; sourceTree = "<group>"; };
 		B52724FC213D53C50061493C /* ResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultCoordinator.swift; path = OrtoClass/Result/Coordinator/ResultCoordinator.swift; sourceTree = SOURCE_ROOT; };
 		B52724FE213D53EB0061493C /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultViewController.swift; path = OrtoClass/Result/UI/ResultViewController.swift; sourceTree = SOURCE_ROOT; };
 		B5272500213D54640061493C /* HomeCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,8 @@
 		B5545F25214652CC005BEE1A /* PatientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientModel.swift; sourceTree = "<group>"; };
 		B5545F2721465541005BEE1A /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		B58FD6FC21402E000012F02A /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
+		B5A450882147025B009FD120 /* PatientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientViewModel.swift; sourceTree = "<group>"; };
+		B5A4508A214702F6009FD120 /* PatientCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientCoordinatorDelegate.swift; sourceTree = "<group>"; };
 		B5B2A0A72129BBF90063A070 /* OrtoClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrtoClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B2A0B62129BBFA0063A070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5B2A0BB2129BBFA0063A070 /* OrtoClassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrtoClassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,9 +118,9 @@
 		B5B2A0E42129BC8C0063A070 /* RestEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestEndpoints.swift; sourceTree = "<group>"; };
 		B5B2A0E52129BC8C0063A070 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B5B2A0E62129BC8C0063A070 /* BaseRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRepositoryProtocol.swift; sourceTree = "<group>"; };
-		B5B2A0EB2129BC990063A070 /* HomeCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
-		B5B2A0ED2129BCA10063A070 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		B5B2A0EF2129BCA90063A070 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		B5B2A0EB2129BC990063A070 /* NewPatientCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPatientCoordinator.swift; sourceTree = "<group>"; };
+		B5B2A0ED2129BCA10063A070 /* NewPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPatientViewController.swift; sourceTree = "<group>"; };
+		B5B2A0EF2129BCA90063A070 /* NewPatientViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPatientViewModel.swift; sourceTree = "<group>"; };
 		B5B2A0F52129BCCE0063A070 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B5B2A0F62129BCCF0063A070 /* CoordinatorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorDelegate.swift; sourceTree = "<group>"; };
 		B5B2A0F92129BCD70063A070 /* DataWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataWrapper.swift; sourceTree = "<group>"; };
@@ -254,7 +258,7 @@
 		B52724F9213D4F760061493C /* FooterView */ = {
 			isa = PBXGroup;
 			children = (
-				B52724FA213D4F930061493C /* HomeCalculateFooterView.swift */,
+				B52724FA213D4F930061493C /* NewPatientCalculateFooterView.swift */,
 			);
 			path = FooterView;
 			sourceTree = "<group>";
@@ -287,7 +291,7 @@
 				B5D5BC712141B22500B0E0CB /* List Of Patient */,
 				9636FD5921354B03008917C4 /* Result */,
 				B5B2A0DA2129BC200063A070 /* Models */,
-				B5B2A0D92129BC1A0063A070 /* Home */,
+				B5B2A0D92129BC1A0063A070 /* NewPatient */,
 				B5B2A0D82129BC0A0063A070 /* Base */,
 				B5B2A0DC2129BC350063A070 /* AppCoordinator.swift */,
 				B5B2A0DB2129BC350063A070 /* AppDelegate.swift */,
@@ -326,14 +330,14 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		B5B2A0D92129BC1A0063A070 /* Home */ = {
+		B5B2A0D92129BC1A0063A070 /* NewPatient */ = {
 			isa = PBXGroup;
 			children = (
 				B5B2A0E12129BC6A0063A070 /* ViewModel */,
 				B5B2A0E02129BC660063A070 /* UI */,
 				B5B2A0DF2129BC5C0063A070 /* Coordinator */,
 			);
-			path = Home;
+			path = NewPatient;
 			sourceTree = "<group>";
 		};
 		B5B2A0DA2129BC200063A070 /* Models */ = {
@@ -351,7 +355,7 @@
 		B5B2A0DF2129BC5C0063A070 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				B5B2A0EB2129BC990063A070 /* HomeCoordinator.swift */,
+				B5B2A0EB2129BC990063A070 /* NewPatientCoordinator.swift */,
 				B5272500213D54640061493C /* HomeCoordinatorDelegate.swift */,
 			);
 			path = Coordinator;
@@ -363,7 +367,7 @@
 				B52724F9213D4F760061493C /* FooterView */,
 				967736A5213552760083109B /* Header */,
 				967736A1213551030083109B /* Cell */,
-				B5B2A0ED2129BCA10063A070 /* HomeViewController.swift */,
+				B5B2A0ED2129BCA10063A070 /* NewPatientViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -371,7 +375,7 @@
 		B5B2A0E12129BC6A0063A070 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				B5B2A0EF2129BCA90063A070 /* HomeViewModel.swift */,
+				B5B2A0EF2129BCA90063A070 /* NewPatientViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -476,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				B5D5BC7C2141B93D00B0E0CB /* PatientsCoordinator.swift */,
+				B5A4508A214702F6009FD120 /* PatientCoordinatorDelegate.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -492,6 +497,7 @@
 		B5D5BC742141B24200B0E0CB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B5A450882147025B009FD120 /* PatientViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -749,7 +755,7 @@
 				B5D5BC772141B27C00B0E0CB /* PatientCollectionViewCell.swift in Sources */,
 				B5B2A0F82129BCCF0063A070 /* CoordinatorDelegate.swift in Sources */,
 				B5B2A0E82129BC8C0063A070 /* RestEndpoints.swift in Sources */,
-				B5B2A0F02129BCA90063A070 /* HomeViewModel.swift in Sources */,
+				B5B2A0F02129BCA90063A070 /* NewPatientViewModel.swift in Sources */,
 				B5E90D55213D621E0028EA56 /* ResultRepository.swift in Sources */,
 				B5D5BC792141B29500B0E0CB /* PatientCollectionViewController.swift in Sources */,
 				B5B2A0F72129BCCF0063A070 /* Coordinator.swift in Sources */,
@@ -762,8 +768,9 @@
 				B5545F26214652CC005BEE1A /* PatientModel.swift in Sources */,
 				B5B2A0DE2129BC350063A070 /* AppCoordinator.swift in Sources */,
 				B5B2A11E2129BD170063A070 /* TableRefresh.swift in Sources */,
-				B5B2A0EE2129BCA10063A070 /* HomeViewController.swift in Sources */,
+				B5B2A0EE2129BCA10063A070 /* NewPatientViewController.swift in Sources */,
 				B5B2A0FB2129BCD70063A070 /* DataWrapper.swift in Sources */,
+				B5A4508B214702F6009FD120 /* PatientCoordinatorDelegate.swift in Sources */,
 				967736A72135528A0083109B /* Header.swift in Sources */,
 				B5272501213D54640061493C /* HomeCoordinatorDelegate.swift in Sources */,
 				B5B2A0DD2129BC350063A070 /* AppDelegate.swift in Sources */,
@@ -773,11 +780,12 @@
 				B5D5BC7D2141B93D00B0E0CB /* PatientsCoordinator.swift in Sources */,
 				B52724FD213D53C50061493C /* ResultCoordinator.swift in Sources */,
 				B5B2A1222129BD210063A070 /* TableRefreshViewModel.swift in Sources */,
+				B5A450892147025B009FD120 /* PatientViewModel.swift in Sources */,
 				B5B2A1072129BCEB0063A070 /* IndexPath+Extensions.swift in Sources */,
 				B5E90D57213D648B0028EA56 /* ResultPOSTModel.swift in Sources */,
 				B5B2A0EA2129BC8C0063A070 /* BaseRepositoryProtocol.swift in Sources */,
-				B52724FB213D4F930061493C /* HomeCalculateFooterView.swift in Sources */,
-				B5B2A0EC2129BC990063A070 /* HomeCoordinator.swift in Sources */,
+				B52724FB213D4F930061493C /* NewPatientCalculateFooterView.swift in Sources */,
+				B5B2A0EC2129BC990063A070 /* NewPatientCoordinator.swift in Sources */,
 				B5B2A1132129BCF70063A070 /* LoaderHUD.swift in Sources */,
 				B5B2A10D2129BCEB0063A070 /* UIImageView.swift in Sources */,
 				B5B2A1142129BCF70063A070 /* LoaderViewModel.swift in Sources */,

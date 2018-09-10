@@ -9,9 +9,7 @@
 import UIKit
 import RxSwift
 
-class HomeViewController: UIViewController, TableRefreshView {
-
-    
+class NewPatientViewController: UIViewController, TableRefreshView {
     
     var tableView: UITableView! = {
         let tableView = UITableView()
@@ -19,11 +17,11 @@ class HomeViewController: UIViewController, TableRefreshView {
         return tableView
     }()
     var disposeBag = DisposeBag()
-    var VM: HomeViewModelProtocol!
+    var VM: NewPatientViewModelProtocol!
 
     
-    let calculateFooterView: CalculateFooterView = {
-        let footerView =  CalculateFooterView()
+    let calculateFooterView: NewPatientCalculateFooterView = {
+        let footerView =  NewPatientCalculateFooterView()
         footerView.translatesAutoresizingMaskIntoConstraints = false
         return footerView
     }()
@@ -39,7 +37,7 @@ class HomeViewController: UIViewController, TableRefreshView {
         super.viewDidLoad()
         setupView()
         calculateFooterView.validateAndOpenResultScreen = self
-        self.title = "OrtoClass"
+        self.title = "Add New Patient"
         self.hideKeyboardWhenTappedAround()
 
     }
@@ -63,6 +61,7 @@ class HomeViewController: UIViewController, TableRefreshView {
         tableView.separatorStyle = .none
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
         tableView.register(CellHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: CellHeaderFooterView.identifier)
+        tableView.register(NameTableViewCell.self, forCellReuseIdentifier: NameTableViewCell.identifier)
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         if #available(iOS 11.0, *) {
@@ -95,7 +94,7 @@ class HomeViewController: UIViewController, TableRefreshView {
 }
 
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource,TableIndexPathDelegate{
+extension NewPatientViewController: UITableViewDelegate, UITableViewDataSource,TableIndexPathDelegate{
 
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -111,19 +110,26 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource,TableIn
         let header: CellHeaderFooterView = tableView.dequeueHeaderFooterView()
         let sectionTitle = VM.itemsToPresent[section].items[0].data
         header.sectionTitleLabel.text = sectionTitle.name
-        
         return header
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: HomeTableViewCell = tableView.dequeue(for: indexPath)
-//        let dataForDisplay = VM.itemsToPresent[indexPath.section].items[indexPath.row].data
-        cell.setupTextFieldChangeObserver()
-        cell.tableRowDelegate = VM
-        cell.tableIndexPathDelegate = self
-        cell.selectionStyle = .none
-        
-        return cell
+        let dataForDisplay = VM.itemsToPresent[indexPath.section].items[indexPath.row].data
+        if (dataForDisplay.name == "Name :"){
+            let cell: NameTableViewCell = tableView.dequeue(for: indexPath)
+            cell.setupTextFieldChangeObserver()
+            cell.tableRowDelegate = VM
+            cell.tableIndexPathDelegate = self
+            cell.selectionStyle = .none
+            return cell
+        }else {
+            let cell: HomeTableViewCell = tableView.dequeue(for: indexPath)
+            cell.setupTextFieldChangeObserver()
+            cell.tableRowDelegate = VM
+            cell.tableIndexPathDelegate = self
+            cell.selectionStyle = .none
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -132,7 +138,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource,TableIn
     }
 }
 
-extension HomeViewController: ValidateAndOpenResultScreenDelegate {
+extension NewPatientViewController: ValidateAndOpenResultScreenDelegate {
     func calculateButtonTapped() {
         VM.validateAndOpenResultScreen()
     }

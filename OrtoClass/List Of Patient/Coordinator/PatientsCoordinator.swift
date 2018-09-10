@@ -14,15 +14,29 @@ class PatientsCoordinator: Coordinator{
     init (presenter: UINavigationController){
         self.presenter = presenter
         let controller = PatientCollectionViewController()
-//        let resultVM = ResultVM(data: data)
-//        controller.VM = resultVM
-        //Add ViewModel initialization.
+        let patientVM = PatientViewModel()
+        controller.VM = patientVM
         self.controller = controller
-        
+        self.controller.VM.patientCoordinatorDelegate = self
     }
     func start() {
         presenter.pushViewController(controller, animated: true)
     }
+    
+    
+}
+extension PatientsCoordinator: PatientCoordinatorDelegate{
+    func openNewPatientScreen() {
+        let newPatientCoordinator = NewPatientCoordinator(presenter: presenter)
+        newPatientCoordinator.start()
+        addChildCoordinator(childCoordinator: newPatientCoordinator)
+    }
+    
+    func viewControllerHasFinished() {
+        
+    }
+    
+    
     
     
 }

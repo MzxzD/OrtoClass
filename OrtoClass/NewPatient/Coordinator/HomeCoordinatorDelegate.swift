@@ -8,7 +8,6 @@
 
 import Foundation
 
-protocol HomeCoordinatorDelegate: CoordinatorDelegate {
-    func openResultScreen(dataToSend: [String])
-    // Dodati model za POST slanje
+protocol NewPatientCoordinatorDelegate: CoordinatorDelegate {
+    func openResultScreen(dataToSend: Patient)
 }

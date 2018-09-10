@@ -7,14 +7,14 @@
 //
 
 import UIKit
-class HomeCoordinator: Coordinator{
+class NewPatientCoordinator: Coordinator{
     var childCoordinators: [Coordinator] = []
     var presenter: UINavigationController
-    let controller: HomeViewController
+    let controller: NewPatientViewController
     init (presenter: UINavigationController){
         self.presenter = presenter
-        let controller = HomeViewController()
-        controller.VM = HomeViewModel()
+        let controller = NewPatientViewController()
+        controller.VM = NewPatientViewModel()
         //Add ViewModel initialization.
         self.controller = controller
         self.controller.VM.homeCoordinatorDelegate = self
@@ -28,8 +28,8 @@ class HomeCoordinator: Coordinator{
 }
 
 
-extension HomeCoordinator: HomeCoordinatorDelegate {
-    func openResultScreen(dataToSend: [String]) {
+extension NewPatientCoordinator: NewPatientCoordinatorDelegate {
+    func openResultScreen(dataToSend: Patient) {
         let resultScreen = ResultCoordinator(presenter: presenter, data: dataToSend)
         resultScreen.start()
         self.addChildCoordinator(childCoordinator: resultScreen)

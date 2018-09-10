@@ -8,8 +8,11 @@
 
 import Foundation
 import RxSwift
+import RealmSwift
 
 enum ItemsEnum{
+    case NAME
+    case YEAR
     case PELVIC_INCIDENCE
     case PELVIC_TILT
     case LUMBAR_LORDOSIS_ANGLE
@@ -26,11 +29,13 @@ typealias ItemsNames = (type:ItemsEnum, name:String)
 typealias ItemsNamesArray = Array<ItemsNames>
 
 
-class HomeViewModel: HomeViewModelProtocol {
+class NewPatientViewModel: NewPatientViewModelProtocol {
+    var newPatient = Patient()
+    var realmServise = RealmSerivce()
     var refreshView: PublishSubject<TableRefresh>
-    let itemsNameArray : ItemsNamesArray = [(type: .PELVIC_INCIDENCE, name: "Pelvic Independence :"),(type: .PELVIC_TILT, name: "Pelvic Tilt :"),(type: .LUMBAR_LORDOSIS_ANGLE, name: "Lumbar lordosis angle :"),(type: .SACRAL_SLOPE, name: "Sacral Slope"),(type: .PELVIC_RADIUS, name: "Pelvic radius :"),(type: .DEGREE_SPONDYLOLISTHESIS, name: "Degree spondylolisthesis")     ]
+    let itemsNameArray : ItemsNamesArray = [(type: .NAME , name: "Name :"),(type: .YEAR, name: "Years :"), (type: .PELVIC_INCIDENCE, name: "Pelvic Independence :"),(type: .PELVIC_TILT, name: "Pelvic Tilt :"),(type: .LUMBAR_LORDOSIS_ANGLE, name: "Lumbar lordosis angle :"),(type: .SACRAL_SLOPE, name: "Sacral Slope"),(type: .PELVIC_RADIUS, name: "Pelvic radius :"),(type: .DEGREE_SPONDYLOLISTHESIS, name: "Degree spondylolisthesis")     ]
     var itemsToPresent: [TableSectionItem<TableTypes, TableTypes, ItemsNames>] = []
-    weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
+    weak var homeCoordinatorDelegate: NewPatientCoordinatorDelegate?
     var values: [String] = ["0","0","0","0","0","0", "Normal"]
     
     
@@ -47,15 +52,12 @@ class HomeViewModel: HomeViewModelProtocol {
     }
     
     func validateAndOpenResultScreen() {
-//        let validateResultTuple = validateInputData()
-//        if (validateResultTuple.value) {
-//            fillObjetAndSendToResult()
-//        }else {
-//            triggerError(errorMessage: validateResultTuple.errorMessage)
-//        }
+
+        if (!self.realmServise.create(object: newPatient)){
+            // ERROR
+        }
         
-        // VALIDATE INPUT WITHIN REASONABLE RANGE
-        homeCoordinatorDelegate?.openResultScreen(dataToSend: self.values)
+        homeCoordinatorDelegate?.openResultScreen(dataToSend: self.newPatient)
         print("Button Tapped!")
     }
     
@@ -65,55 +67,57 @@ class HomeViewModel: HomeViewModelProtocol {
         switch dataToSave.type {
         case .PELVIC_INCIDENCE:
             if input.isEmpty{
-            self.values[0] = "0"
+                self.newPatient.pelvicIncidence = .empty
             }else{
-                self.values[0] = input
+                self.newPatient.pelvicIncidence = input
             }
         case .PELVIC_TILT:
             if input.isEmpty{
-                self.values[1] = "0"
+                self.newPatient.pelvicTilt = .empty
             }else{
-                self.values[1] = input
-
+                self.newPatient.pelvicTilt = input
             }
         case .LUMBAR_LORDOSIS_ANGLE:
             if input.isEmpty{
-                self.values[2] = "0"
+                self.newPatient.lumbarLordosis_angle = .empty
             }else{
-                self.values[2] = input
+                self.newPatient.lumbarLordosis_angle = input
             }
         case .SACRAL_SLOPE:
             if input.isEmpty{
-                self.values[3] = "0"
+                self.newPatient.sacralSlope = .empty
             }else {
-                 self.values[3] = input
+                 self.newPatient.sacralSlope = input
             }
            
         case .PELVIC_RADIUS:
             if input.isEmpty{
-                self.values[4] = "0"
+                self.newPatient.pelvicRadius = .empty
             }else {
-                self.values[4] = input
+                self.newPatient.pelvicRadius = input
             }
             
         case .DEGREE_SPONDYLOLISTHESIS:
             if input.isEmpty{
-                self.values[5] = "0"
+                self.newPatient.degreeSpondylolisthesis = .empty
             }else {
-                self.values[5] = input
+                self.newPatient.degreeSpondylolisthesis = input
             }
          
+        case .NAME:
+            self.newPatient.patientName = input
+        case .YEAR:
+            self.newPatient.age = input
         }
         print(self.values)
     }
     
 }
 
-// ADD DELEGATE TO AUTOMACITALLY FILL DATA WHILE ITS ENTERING
-
-protocol HomeViewModelProtocol: TableRefreshViewModelProtocol, TableRowDelegate {
+protocol NewPatientViewModelProtocol: TableRefreshViewModelProtocol, TableRowDelegate {
     var itemsToPresent: [TableSectionItem<TableTypes, TableTypes, ItemsNames>] {get}
-    var homeCoordinatorDelegate: HomeCoordinatorDelegate? {get set}
+    var homeCoordinatorDelegate: NewPatientCoordinatorDelegate? {get set}
+    var newPatient: Patient {get}
     func validateAndOpenResultScreen()
 }
 

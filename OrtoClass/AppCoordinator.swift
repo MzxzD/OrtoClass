@@ -28,7 +28,7 @@ class AppCoordinator: Coordinator{
     func start() {
         window.rootViewController = presenter
         window.makeKeyAndVisible()
-        let homeCoordinator = PatientsCoordinator(presenter: presenter) //HomeCoordinator(presenter: presenter)
+        let homeCoordinator =  PatientsCoordinator(presenter: presenter) //  HomeCoordinator(presenter: presenter)
         addChildCoordinator(childCoordinator: homeCoordinator)
         homeCoordinator.start()
     }

@@ -19,18 +19,29 @@ struct ResultPostModel: Codable {
 }
 
 struct GlobalParameters: Codable {
+    let appendScoreColumnsToOutput: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case appendScoreColumnsToOutput = "Append score columns to output"
+    }
 }
 
 struct Inputs: Codable {
-    let input1: Input1
+    let input1: [Input1]
 }
 
 struct Input1: Codable {
-    let columnNames: [String]
-    let values: [[String]]
+    let pelvicIncidence, pelvicTilt, lumbarLordosisAngle, sacralSlope: Int
+    let pelvicRadius, degreeSpondylolisthesis: Int
+    let input1Class: String
     
     enum CodingKeys: String, CodingKey {
-        case columnNames = "ColumnNames"
-        case values = "Values"
+        case pelvicIncidence = "pelvic_incidence"
+        case pelvicTilt = "pelvic_tilt"
+        case lumbarLordosisAngle = "lumbar_lordosis_angle"
+        case sacralSlope = "sacral_slope"
+        case pelvicRadius = "pelvic_radius"
+        case degreeSpondylolisthesis = "degree_spondylolisthesis"
+        case input1Class = "class"
     }
 }

@@ -16,28 +16,27 @@ struct POSTJsonResponse: Codable {
 }
 
 struct Results: Codable {
-    let output1: Output1
+    let output1: [[String: String?]]
 }
 
-struct Output1: Codable {
-    let type: String?
-    let value: Value
-}
+//struct Output1: Codable {
+//
+//}
 
-struct Value: Codable {
-    let columnNames: [String]?
-    let columnTypes: [ColumnType]?
-    let values: [[String]]
-    
-    enum CodingKeys: String, CodingKey {
-        case columnNames = "ColumnNames"
-        case columnTypes = "ColumnTypes"
-        case values = "Values"
-    }
-}
-
-enum ColumnType: String, Codable {
-    case double = "Double"
-    case string = "String"
-}
+//struct Value: Codable {
+//    let columnNames: [String]?
+//    let columnTypes: [ColumnType]?
+//    let values: [[String]]
+//
+//    enum CodingKeys: String, CodingKey {
+//        case columnNames = "ColumnNames"
+//        case columnTypes = "ColumnTypes"
+//        case values = "Values"
+//    }
+//}
+//
+//enum ColumnType: String, Codable {
+//    case double = "Double"
+//    case string = "String"
+//}
 

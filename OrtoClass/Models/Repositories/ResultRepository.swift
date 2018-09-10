@@ -11,7 +11,7 @@ import RxSwift
 import Alamofire
 
 class ResultRepository: ResultsRepositoryProtocol {
-    let url = "https://ussouthcentral.services.azureml.net/workspaces/cc0531fc3664458684a8eb62ec57fc33/services/cca9b4e6ac064e99a30e639a7fca6e88/execute?api-version=2.0&details=true)"
+    let url = "https://ussouthcentral.services.azureml.net/workspaces/cc0531fc3664458684a8eb62ec57fc33/services/cca9b4e6ac064e99a30e639a7fca6e88/execute?api-version=2.0&format=swagger"
     let headers : HTTPHeaders = ["Authorization": "Bearer oKPbeu63h+JFpgdSH31N5SWhrgWaGd1vblCO23Dy9fwtZV76MwF8u+w7a7FSpgTPFaPJAUxJMOgyzbEPk6wErw==", "Content-Type":"application/json"]
     func postCalculatorResultsObservable(result: ResultPostModel) -> Observable<POSTJsonResponse> {
         let encodedData = try! JSONEncoder().encode(result)

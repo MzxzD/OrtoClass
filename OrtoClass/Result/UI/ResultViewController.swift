@@ -99,7 +99,6 @@ class ResultViewController: UIViewController, LoaderViewProtocol{
                 }else {
                     
                     self.dismissLoader()
-                    
                 }
             })
             .drive()

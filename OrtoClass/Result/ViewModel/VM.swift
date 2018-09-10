@@ -10,15 +10,22 @@ import Foundation
 import RxSwift
 import Charts
 
-
+enum valueDisctinaryEnum: String {
+    case pelvicIncidence = "pelvic_incidence"
+    case pelvicTilt = "pelvic_tilt"
+    case lumbarLordosisAngle = "lumbar_lordosis_angle"
+    case sacralSlope = "sacral_slope"
+    case pelvicRadius = "pelvic_radius"
+    case degreeSpondylolisthesis = "degree_spondylolisthesis"
+    case diagnosis = "Scored Labels"
+    case scoreHernia = "Scored Probabilities for Class \"Hernia\""
+    case scoreSpon = "Scored Probabilities for Class \"Spondylolisthesis\""
+    case scoreNormal = "Scored Probabilities for Class \"Normal\""
+}
 
 class ResultVM: ResultVMProtocol{
+    var patient: Patient
     var resultTuple: (name: String, value: String)!
-    static let responseElement = 0
-    static let scoredLabelIndex = 10
-    static let scoredProbabilityNormalIndex = 9
-    static let scoredProbabilitySpondylolisthesisIndex = 8
-    static let scoredProbabilityHerniaIndex = 7
     var errorOccured: PublishSubject<String>
     var loaderPublisher: PublishSubject<Bool>
     var refreshView: PublishSubject<TableRefresh>
@@ -33,25 +40,15 @@ class ResultVM: ResultVMProtocol{
     var chartData: PieChartData!
     let colors = [UIColor.blue,UIColor.red, UIColor(red:0.51, green:0.58, blue:0.34, alpha:1.0)]
     
-    // RECIVE OBJET TO SENT TO API
-    init(data : [String]) {
+    init(data : Patient) {
         self.errorOccured = PublishSubject()
+        self.patient = data
         self.loaderPublisher = PublishSubject()
         self.refreshView = PublishSubject()
         self.dataInitialized = PublishSubject()
         self.refreshPublisher = ReplaySubject<Bool>.create(bufferSize: 1)
-
-
-        // REPLACE DUMMY OBJECT WITH OBJECT FROM PAST SCREEN
-        self.result = ResultPostModel(inputs: Inputs(input1: Input1(columnNames: ["pelvic_incidence",
-                                                                                  "pelvic_tilt",
-                                                                                  "lumbar_lordosis_angle",
-                                                                                  "sacral_slope",
-                                                                                  "pelvic_radius",
-                                                                                  "degree_spondylolisthesis",
-                                                                                  "class"],
-                                                                    values: [ data, ]
-                                                                    )), globalParameters: GlobalParameters())
+        self.result = ResultPostModel(inputs: Inputs(input1: [Input1(pelvicIncidence: Int(data.pelvicIncidence)!, pelvicTilt: Int(data.pelvicTilt)!, lumbarLordosisAngle: Int(data.lumbarLordosis_angle)!, sacralSlope: Int(data.sacralSlope)!, pelvicRadius: Int(data.pelvicRadius)!, degreeSpondylolisthesis: Int(data.degreeSpondylolisthesis)!, input1Class: .empty
+            )]), globalParameters: GlobalParameters(appendScoreColumnsToOutput: false))
     }
     
     func initializeObservableResultDataAPI() -> Disposable {
@@ -60,14 +57,39 @@ class ResultVM: ResultVMProtocol{
             return ResultRepository().postCalculatorResultsObservable(result: self.result)
         }
         return resultPostObserver
-            .map({ (response) -> [String] in
-                return response.results.output1.value.values[ResultVM.responseElement]
+            .map({ (response) -> Patient in
+                let patient = Patient()
+                for data in response.results.output1.first! {
+                    if data.key == valueDisctinaryEnum.scoreNormal.rawValue {
+                        if let value = data.value  {
+                            patient.normalProbability = value
+                        }
+                    }
+                    if data.key == valueDisctinaryEnum.scoreHernia.rawValue {
+                        if let value = data.value {
+                            patient.herniaProbability = value
+                        }
+                    }
+                    if data.key == valueDisctinaryEnum.scoreSpon.rawValue {
+                        if let value = data.value  {
+                            patient.spondylolisthesisProbability = value
+                        }
+                    }
+                    if data.key == valueDisctinaryEnum.diagnosis.rawValue {
+                        if let value = data.value  {
+                            patient.diagnosis = value
+
+                        }
+                    }
+
+                }
+                return patient
             })
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler.instance)
             
-            .subscribe(onNext: {  [unowned self] (resultArray)  in
-                self.generateData(resultArray)
+            .subscribe(onNext: {  [unowned self] (resultObject)  in
+                self.generateData(resultObject)
                 self.loaderPublisher.onNext(false)
                 self.dataInitialized.onNext(true)
                 }, onError: { (error) in
@@ -76,14 +98,21 @@ class ResultVM: ResultVMProtocol{
             })
     }
 
-    fileprivate func generateData(_ resultArray: ([String])) {
-        self.normalProbability = PieChartDataEntry(value: Double(resultArray[ResultVM.scoredProbabilityNormalIndex])!*100)
-        self.herniaProbability = PieChartDataEntry(value: Double(resultArray[ResultVM.scoredProbabilityHerniaIndex])!*100)
-        self.spondylolisthesisProbability = PieChartDataEntry(value: Double(resultArray[ResultVM.scoredProbabilitySpondylolisthesisIndex])!*100)
+    fileprivate func generateData(_ resultObject: (Patient)) {
+        
+        self.patient.herniaProbability = resultObject.herniaProbability
+        self.patient.normalProbability = resultObject.normalProbability
+        self.patient.spondylolisthesisProbability = resultObject.spondylolisthesisProbability
+        self.patient.diagnosis = resultObject.diagnosis
+
+        self.normalProbability = PieChartDataEntry(value: Double(patient.normalProbability)!*100)
+        self.herniaProbability = PieChartDataEntry(value: Double(patient.herniaProbability)!*100)
+        self.spondylolisthesisProbability = PieChartDataEntry(value: Double(patient.spondylolisthesisProbability)!*100)
+        self.resultTuple = (name: patient.diagnosis, value: self.getScore())
         self.normalProbability.label = "Normal"
         self.herniaProbability.label = "Hernia"
         self.spondylolisthesisProbability.label = "Spondylolisthesis"
-        self.resultTuple = (name: resultArray[ResultVM.scoredLabelIndex], value: self.getScore())
+
         self.prabillityArray = [self.normalProbability,self.herniaProbability, self.spondylolisthesisProbability]
         self.chartDataSet = PieChartDataSet(values: self.prabillityArray, label: "Possible outcomes")
         self.chartDataSet.colors = self.colors
@@ -105,6 +134,7 @@ protocol ResultVMProtocol: LoaderViewModelProtocol, TableRefreshViewModelProtoco
     func initializeObservableResultDataAPI() -> Disposable
     var dataInitialized: PublishSubject<Bool> {get}
     func startDownload()
+    var patient: Patient {get}
     var resultTuple:(name: String, value: String)! {get}
     var errorOccured: PublishSubject<String> {get}
     var chartData: PieChartData! {get}

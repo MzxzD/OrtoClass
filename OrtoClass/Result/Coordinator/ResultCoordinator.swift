@@ -11,7 +11,7 @@ class ResultCoordinator: Coordinator{
     var childCoordinators: [Coordinator] = []
     var presenter: UINavigationController
     let controller: ResultViewController
-    init (presenter: UINavigationController, data: [String] ){
+    init (presenter: UINavigationController, data: Patient ){
         self.presenter = presenter        
         let controller = ResultViewController()
         let resultVM = ResultVM(data: data)
