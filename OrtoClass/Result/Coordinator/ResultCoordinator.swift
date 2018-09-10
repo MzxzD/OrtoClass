@@ -18,6 +18,7 @@ class ResultCoordinator: Coordinator{
         controller.VM = resultVM
         //Add ViewModel initialization.
         self.controller = controller
+        controller.title = data.patientName
         
     }
     func start() {

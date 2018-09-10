@@ -31,8 +31,8 @@ struct Inputs: Codable {
 }
 
 struct Input1: Codable {
-    let pelvicIncidence, pelvicTilt, lumbarLordosisAngle, sacralSlope: Int
-    let pelvicRadius, degreeSpondylolisthesis: Int
+    let pelvicIncidence, pelvicTilt, lumbarLordosisAngle, sacralSlope: Double
+    let pelvicRadius, degreeSpondylolisthesis: Double
     let input1Class: String
     
     enum CodingKeys: String, CodingKey {

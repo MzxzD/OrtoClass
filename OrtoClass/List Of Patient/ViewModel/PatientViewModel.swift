@@ -66,6 +66,9 @@ class PatientViewModel: PatientViewModelProtocol {
         patientCoordinatorDelegate?.openNewPatientScreen()
     }
     
+    func openResultScreen(selectedIndex: IndexPath){
+        patientCoordinatorDelegate?.openResultScreen(data: self.patients[selectedIndex.row])
+    }
     
     
 }
@@ -74,6 +77,7 @@ class PatientViewModel: PatientViewModelProtocol {
 protocol PatientViewModelProtocol: TableRefreshViewModelProtocol, LoaderViewModelProtocol {
     var patientCoordinatorDelegate: PatientCoordinatorDelegate? {get set}
     func getStoredPatients() -> Disposable
+     func openResultScreen(selectedIndex: IndexPath)
      func getDataFromRealm()
     var realmTrigger : PublishSubject<Bool> {get}
     var dataIsReady : PublishSubject<Bool> {get}

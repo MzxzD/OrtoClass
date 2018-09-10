@@ -138,25 +138,25 @@ class HomeTableViewCell: UITableViewCell, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let oldText = textField.text, let r = Range(range, in: oldText) else {
-            return true
-        }
-        let decimalPoint: CharacterSet = CharacterSet(charactersIn: NSLocale.current.decimalSeparator!)
-        let newText = oldText.replacingCharacters(in: r, with: string)
-        let textFormatter = NumberFormatter()
-        let isNumeric = newText.isEmpty || textFormatter.number(from: newText) != nil
-        let numberOfDots = newText.components(separatedBy: decimalPoint ).count - 1
-
-        let numberOfDecimalDigits: Int
-        if let dotIndex = newText.index(of: (NSLocale.current.decimalSeparator?.first)!) {
-            numberOfDecimalDigits = newText.distance(from: dotIndex, to: newText.endIndex) - 1
-        } else {
-            numberOfDecimalDigits = 0
-        }
-        let shouldChangeText = isNumeric && numberOfDots <= 1 && numberOfDecimalDigits <= 2
-        return shouldChangeText
-    }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        guard let oldText = textField.text, let r = Range(range, in: oldText) else {
+//            return true
+//        }
+//        let decimalPoint: CharacterSet = CharacterSet(charactersIn: NSLocale.current.decimalSeparator!)
+//        let newText = oldText.replacingCharacters(in: r, with: string)
+//        let textFormatter = NumberFormatter()
+//        let isNumeric = newText.isEmpty || textFormatter.number(from: newText) != nil
+//        let numberOfDots = newText.components(separatedBy: decimalPoint ).count - 1
+//
+//        let numberOfDecimalDigits: Int
+//        if let dotIndex = newText.index(of: (NSLocale.current.decimalSeparator?.first)!) {
+//            numberOfDecimalDigits = newText.distance(from: dotIndex, to: newText.endIndex) - 1
+//        } else {
+//            numberOfDecimalDigits = 0
+//        }
+//        let shouldChangeText = isNumeric && numberOfDots <= 1 && numberOfDecimalDigits <= 2
+//        return shouldChangeText
+//    }
     
     
     func setupTextFieldChangeObserver(){

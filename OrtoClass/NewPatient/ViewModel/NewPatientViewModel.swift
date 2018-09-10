@@ -52,8 +52,8 @@ class NewPatientViewModel: NewPatientViewModelProtocol {
     }
     
     func validateAndOpenResultScreen() {
-
-        if (!self.realmServise.create(object: newPatient)){
+        let patient = newPatient
+        if (!self.realmServise.create(object: patient)){
             // ERROR
         }
         

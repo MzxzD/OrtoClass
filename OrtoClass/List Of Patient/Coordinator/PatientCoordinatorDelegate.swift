@@ -9,4 +9,5 @@
 import Foundation
 protocol PatientCoordinatorDelegate: CoordinatorDelegate {
     func openNewPatientScreen()
+    func openResultScreen(data: Patient)
 }

@@ -26,6 +26,12 @@ class PatientsCoordinator: Coordinator{
     
 }
 extension PatientsCoordinator: PatientCoordinatorDelegate{
+    func openResultScreen(data: Patient) {
+        let resultScreenCoordinator = ResultCoordinator(presenter: presenter, data: data)
+        resultScreenCoordinator.start()
+        addChildCoordinator(childCoordinator: resultScreenCoordinator)
+    }
+    
     func openNewPatientScreen() {
         let newPatientCoordinator = NewPatientCoordinator(presenter: presenter)
         newPatientCoordinator.start()

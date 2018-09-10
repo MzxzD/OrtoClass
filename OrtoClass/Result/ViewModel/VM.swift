@@ -9,6 +9,8 @@
 import Foundation
 import RxSwift
 import Charts
+import RealmSwift
+import Realm
 
 enum valueDisctinaryEnum: String {
     case pelvicIncidence = "pelvic_incidence"
@@ -25,6 +27,7 @@ enum valueDisctinaryEnum: String {
 
 class ResultVM: ResultVMProtocol{
     var patient: Patient
+    var realmServise = RealmSerivce()
     var resultTuple: (name: String, value: String)!
     var errorOccured: PublishSubject<String>
     var loaderPublisher: PublishSubject<Bool>
@@ -47,7 +50,7 @@ class ResultVM: ResultVMProtocol{
         self.refreshView = PublishSubject()
         self.dataInitialized = PublishSubject()
         self.refreshPublisher = ReplaySubject<Bool>.create(bufferSize: 1)
-        self.result = ResultPostModel(inputs: Inputs(input1: [Input1(pelvicIncidence: Int(data.pelvicIncidence)!, pelvicTilt: Int(data.pelvicTilt)!, lumbarLordosisAngle: Int(data.lumbarLordosis_angle)!, sacralSlope: Int(data.sacralSlope)!, pelvicRadius: Int(data.pelvicRadius)!, degreeSpondylolisthesis: Int(data.degreeSpondylolisthesis)!, input1Class: .empty
+        self.result = ResultPostModel(inputs: Inputs(input1: [Input1(pelvicIncidence: Double(data.pelvicIncidence)!, pelvicTilt: Double(data.pelvicTilt)!, lumbarLordosisAngle: Double(data.lumbarLordosis_angle)!, sacralSlope: Double(data.sacralSlope)!, pelvicRadius: Double(data.pelvicRadius)!, degreeSpondylolisthesis: Double(data.degreeSpondylolisthesis)!, input1Class: .empty
             )]), globalParameters: GlobalParameters(appendScoreColumnsToOutput: false))
     }
     
@@ -99,11 +102,13 @@ class ResultVM: ResultVMProtocol{
     }
 
     fileprivate func generateData(_ resultObject: (Patient)) {
-        
-        self.patient.herniaProbability = resultObject.herniaProbability
-        self.patient.normalProbability = resultObject.normalProbability
-        self.patient.spondylolisthesisProbability = resultObject.spondylolisthesisProbability
-        self.patient.diagnosis = resultObject.diagnosis
+       try! self.realmServise.realm.write {
+                self.patient.herniaProbability = resultObject.herniaProbability
+                self.patient.normalProbability = resultObject.normalProbability
+                self.patient.spondylolisthesisProbability = resultObject.spondylolisthesisProbability
+                self.patient.diagnosis = resultObject.diagnosis
+        }
+
 
         self.normalProbability = PieChartDataEntry(value: Double(patient.normalProbability)!*100)
         self.herniaProbability = PieChartDataEntry(value: Double(patient.herniaProbability)!*100)

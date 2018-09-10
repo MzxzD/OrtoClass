@@ -66,9 +66,9 @@ class PatientCollectionViewController: UITableViewController, TableRefreshView, 
             let patientData = VM.patients[indexPath.row]
             let cell: PatientCollectionViewCell = tableView.dequeue(for: indexPath)
             cell.patientName.text = patientData.patientName
-            cell.normalProbabilityLabel.text = patientData.normalProbability
-            cell.spondylolisthesisProbabilityLabel.text = patientData.spondylolisthesisProbability
-            cell.herniaProbabilityLabel.text = patientData.herniaProbability
+            cell.normalProbabilityLabel.text = String(Double(patientData.normalProbability)!*100)+" %"
+            cell.spondylolisthesisProbabilityLabel.text = String(Double(patientData.spondylolisthesisProbability)!*100)+" %"
+        cell.herniaProbabilityLabel.text = String(Double(patientData.herniaProbability)!*100)+" %"
             return cell
         }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -91,6 +91,10 @@ class PatientCollectionViewController: UITableViewController, TableRefreshView, 
             self.tableView.rowHeight = 45
             
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        VM.openResultScreen(selectedIndex: indexPath)
     }
     
     @objc func addTapped() {
